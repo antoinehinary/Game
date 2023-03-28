@@ -1,0 +1,73 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 125: end of line expected.
+(Perhaps you left out a " at the end of the first line.)
+    """
+    
+    
+    label start:    
+    
+        $ power = 30
+        $ power_max = 50
+        $ money = 30
+        $ money_max = 50
+    
+        show screen control()
+        scene fond
+        show text "Script Events 1" at truecenter
+                               ^
+    
+    menu:
+    
+        "Choix 1":
+            jump choice1_yes
+        "Choix 2":
+            jump choice1_no
+    
+    label choice1_yes:
+        $ menu_flag = True
+        "Script choix 1"
+        $ stat_1 = 2
+        jump choice1_done
+    
+    label choice1_no:
+        $ menu_flag = False
+        "Script choix 1"
+        $ stat_1 = 2
+        jump choice1_done
+    
+    label choice1_done:
+        
+        show screen control()
+        scene fond
+        show text "Script Events 2" at truecenter
+    
+    menu:
+    
+        "Choix 1":
+            jump choice2_yes
+        "Choix 2":
+            jump choice2_no
+    
+    label choice2_yes:
+        $ menu_flag = True
+        "Script choix 1"
+        $ money = 2
+        jump choice2_done
+    
+    label choice2_no:
+        $ menu_flag = False
+        "Script choix 1"
+        $ population = 2
+        jump choice2_done
+    
+    label choice2_done:
+    
+        return
+    
+    """
+
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Tue Mar 21 14:16:38 2023
