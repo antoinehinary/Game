@@ -3,140 +3,80 @@ default power = 0
 default happiness = 0
 default population = 0
 
-screen simple_stats_screen:
-    frame:
-        xalign 0.0 yalign 0.01
-        vbox:
-            text "{image=coin.png}: [money]" size 22 xalign 0.5
-            null height 5
-            hbox:
-                bar:
-                    xmaximum 130
-                    value money
-                    range money_max
-                    left_gutter 0
-                    right_gutter 0
-                    thumb None
-                    thumb_shadow None
-                    
-                null width 5         
-                
-    frame:
-        xalign 0.0 yalign 0.09
-        vbox:
-            text "{image=power.png}: [power]" size 22 xalign 0.5
-            null height 5
-            hbox:
-                bar:
-                    xmaximum 130
-                    value power
-                    range power_max
-                    left_gutter 0
-                    right_gutter 0
-                    thumb None
-                    thumb_shadow None
-                    
-                null width 5
+define p = Character('Hanta', color="#20B2AA")
 
-    frame:
-        xalign 0.1 yalign 0.01
-        vbox:
-            text "{image=hapiness.png}: [happiness]" size 22 xalign 0.5
-            null height 5
-            hbox:
-                bar:
-                    xmaximum 130
-                    value happiness
-                    range happiness_max
-                    left_gutter 0
-                    right_gutter 0
-                    thumb None
-                    thumb_shadow None
-                    
-                null width 5
-
-    frame:
-        xalign 0.1 yalign 0.09
-        vbox:
-            text "{image=population.png}: [population]" size 22 xalign 0.5
-            null height 5
-            hbox:
-                bar:
-                    xmaximum 130
-                    value population
-                    range population_max
-                    left_gutter 0
-                    right_gutter 0
-                    thumb None
-                    thumb_shadow None
-                    
-                null width 5
-                
 # The game starts here.
 label start:
-    $ money = 30
-    $ money_max = 50
-    $ power =30
-    $ power_max =50
-    $ happiness =30
-    $ happiness_max =50
-    $ population =50
-    $ population_max =50
+    $ money = 10
+    $ money_max = 100
+    $ power = 10
+    $ power_max = 100
+    $ happiness = 10
+    $ happiness_max = 100
+    $ population = 10
+    $ population_max = 100
+    $ list_scenario = ["scenario1" ,"scenario2","scenario3","scenario4","scenario5"]
+    $ renpy.random.shuffle(list_scenario)
+    $ loop = 0
 
 label game:
-    
+    scene auroraborealis
+    jump presentation
+
+    scene ville1
     show screen simple_stats_screen
-    scene village
-    show text "Script Events 1" at truecenter
+    jump scenario1
 
-menu:
+label choice_done:
+    if list_scenario and loop <10 :
+        $ loop +=1
+        show screen simple_stats_screen
 
-    "Choix 1":
-        jump choice1_yes
-    "Choix 2":
-        jump choice1_no
-
-label choice1_yes:
-    $ menu_flag = True
-    "Script choix 1"
-    $ power =2
-    jump choice1_done
-
-label choice1_no:
-    $ menu_flag = False
-    "Script choix 1"
-    $ power =2
-    jump choice1_done
-
-label choice1_done:
-    
-    show screen simple_stats_screen
-    scene village
-    show text "Script Events 2" at truecenter
-
-menu:
-
-    "Choix 1":
-        jump choice2_yes
-    "Choix 2":
-        jump choice2_no
-
-label choice2_yes:
-    $ menu_flag = True
-    "Script choix 1"
-    $ power =2
-    jump choice2_done
-
-label choice2_no:
-    $ menu_flag = False
-    "Script choix 1"
-    $ power =2
-    jump choice2_done
-
-label choice2_done:
+        #verification of ressources
+        $ lose=0
+        if money ==0:
+            $ lose +=1
+        if happiness ==0:
+            $ lose +=1
+        if power ==0:
+            $ lose +=1
+        if lose >=2:
+            jump dead
+        if happiness <0 or power <0 or population<=0 :
+            jump dead
+        if money<0 :
+            "Be careful, you are in debt"
         
-    hide screen simple_stats_screen
-    
+        #Background choice
+        $ moy = (money+power+happiness+population)/4
+        if money <=2:
+            scene ruins1
+        elif population <= 10 :
+            if happiness <=10 :
+                scene ville1
+            elif happiness >= 10:
+                scene ville2
+        elif moy >=80 :
+            scene ville8
+        elif moy >=70 :
+            scene ville7
+        elif moy >=60 :
+            scene ville6
+        elif moy >=50 :
+            scene ville5
+        elif moy >=40 :
+            scene ville4
+        else:
+            scene ville3
+
+        python :
+            renpy.jump(list_scenario.pop(0))
+    else :
+        jump ending
+
+label dead:
+    "You lose"
+            
 label ending:
     "The end."
 
