@@ -2,8 +2,8 @@
 default power = 0
 default happiness = 0
 default population = 0
+#default hubmenu = True
 
-define p = Character('Hanta', color="#20B2AA")
 
 # The game starts here.
 label start:
@@ -15,19 +15,17 @@ label start:
     $ happiness_max = 100
     $ population = 10
     $ population_max = 100
-    $ list_scenario = ["scenario1" ,"scenario2","scenario3","scenario4","scenario5"]
+    $ world = 0
+    $ list_scenario = ["scenario1" ,"scenario2","scenario3","scenario4","scenario5","scenario6","scenario7","scenariop1","scenariop2","scenarion1","scenarion2"]
     $ renpy.random.shuffle(list_scenario)
     $ loop = 0
 
 label game:
-    scene auroraborealis
+    scene path
     jump presentation
 
-    scene ville1
-    show screen simple_stats_screen
-    jump scenario1
-
 label choice_done:
+    $ hubmenu = True
     if list_scenario and loop <10 :
         $ loop +=1
         show screen simple_stats_screen
@@ -49,25 +47,47 @@ label choice_done:
         
         #Background choice
         $ moy = (money+power+happiness+population)/4
-        if money <=2:
-            scene ruins1
-        elif population <= 10 :
-            if happiness <=10 :
-                scene ville1
-            elif happiness >= 10:
-                scene ville2
-        elif moy >=80 :
-            scene ville8
-        elif moy >=70 :
-            scene ville7
-        elif moy >=60 :
-            scene ville6
-        elif moy >=50 :
-            scene ville5
-        elif moy >=40 :
-            scene ville4
-        else:
-            scene ville3
+        if (world == 0 ):
+            if money <=2:
+                scene ruins1
+            elif population <= 10 :
+                if happiness <=10 :
+                    scene ville1
+                elif happiness >= 10:
+                    scene ville2
+            elif moy >=80 :
+                scene ville8
+            elif moy >=70 :
+                scene ville7
+            elif moy >=60 :
+                scene ville6
+            elif moy >=50 :
+                scene ville5
+            elif moy >=40 :
+                scene ville4
+            else:
+                scene ville3
+
+        elif (world == 1) :
+            if money <=2:
+                scene medievaltown1
+            elif population <= 10 :
+                if happiness <=10 :
+                    scene medievaltown3
+                elif happiness >= 10:
+                    scene medievaltown4
+            elif moy >=80 :
+                scene medievaltown10
+            elif moy >=70 :
+                scene medievaltown9
+            elif moy >=60 :
+                scene Mmedievaltown8
+            elif moy >=50 :
+                scene medievaltown7
+            elif moy >=40 :
+                scene medievaltown6
+            else:
+                scene medievaltown5
 
         python :
             renpy.jump(list_scenario.pop(0))

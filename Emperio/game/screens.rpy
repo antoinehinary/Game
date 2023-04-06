@@ -206,11 +206,18 @@ style input:
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
 screen choice(items):
-    style_prefix "choice"
+    if hubmenu == True:
+        style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action
+        vbox:
+            for i in items:
+                textbutton i.caption action i.action
+    else :
+        style_prefix "choice_h"
+
+        hbox:
+            for i in items:
+                textbutton i.caption action i.action
 
 
 style choice_vbox is vbox
@@ -229,6 +236,35 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
+
+
+style choice_h_vbox is hbox
+style choice_h_button is button
+style choice_h_button_text is button_text
+
+style choice_h_hbox:
+    xalign 0.5
+    yalign 0.95
+    spacing 3
+
+    #spacing gui.choice_spacing
+
+style choice_h_button is default:
+    properties gui.button_properties("choice_button")
+
+style choice_h_button_text is default:
+    properties gui.button_text_properties("choice_button")
+
+style choice_h_button is button :
+    xminimum int(config.screen_width *0.24)
+    xmaximum int(config.screen_width *0.5)
+    yminimum 30
+    ypadding 5
+    xpadding 5
+
+
+
+
 
 
 ## Écran des menus rapides #####################################################

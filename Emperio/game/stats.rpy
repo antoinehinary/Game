@@ -55,3 +55,4 @@ screen simple_stats_screen:
         thumb None
         thumb_shadow None
     text "Population : [population]/[population_max]" size 10 xalign 0.077 yalign 0.228
+
