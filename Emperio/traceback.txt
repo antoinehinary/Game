@@ -1,28 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
-  File "game/screens.rpy", line 208, in prepare_screen
-    screen choice(items):
-Exception: Properties are not allowed here.
+While running game code:
+  File "game/scenario.rpy", line 30, in script
+    show character with leftside :
+TypeError: MoveTransition() got an unexpected keyword argument 'time_wrap'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\bootstrap.py", line 277, in bootstrap
-    renpy.main.main()
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\main.py", line 660, in main
-    run(restart)
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\main.py", line 95, in run
-    renpy.display.screen.prepare_screens()
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\display\screen.py", line 976, in prepare_screens
-    s.ast.prepare_screen()
-  File "game/screens.rpy", line 208, in prepare_screen
-    screen choice(items):
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\sl2\slast.py", line 448, in prepare
-    raise Exception("Properties are not allowed here.")
-Exception: Properties are not allowed here.
+  File "game/scenario.rpy", line 30, in script
+    show character with leftside :
+  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\ast.py", line 1658, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\exports.py", line 1657, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\display\core.py", line 2798, in do_with
+    return self.interact(trans_pause=True,
+  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\display\core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\display\core.py", line 3752, in interact_core
+    trans = self.ongoing_transition[None](
+TypeError: MoveTransition() got an unexpected keyword argument 'time_wrap'
 
 Windows-10-10.0.19044 AMD64
 Ren'Py 8.0.3.22090809
 Emperio 1.0
-Wed Apr  5 17:39:44 2023
+Mon Apr 10 09:27:58 2023

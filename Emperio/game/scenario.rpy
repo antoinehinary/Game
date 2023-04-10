@@ -1,3 +1,16 @@
+transform offscrennbottomleft :
+    xpos 0.0 xanchor 0.0 ypos 2.0 yanchor 1.0
+
+
+define leftside = MoveTransition(delay=0.3,
+                                enter = offscrennbottomleft,
+                                leave = offscrennbottomleft,
+                                old = False,
+                                layers = ["master"],
+                                time_warp = ease,
+                                enter_time_warp=None,
+                                leave_time_warp =None)
+
 ################################################ Event Mixtes
 
 label scenario1:
@@ -15,8 +28,10 @@ label choice1_1:
     $ a = renpy.random.choice([0,1])
     $ menu_flag = True
     if a==0 :
-        show character at left :
+        show character with leftside  :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
+ 
         "The traders bring novelty to the village! \n Gain : money {image=arrow_up.png} 10, population {image=arrow_up.png} 10"
         $ money +=10
         $ population +=10
@@ -24,8 +39,9 @@ label choice1_1:
         jump choice_done
 
     elif a==1 :
-        show character_sad at left :
+        show character_sad with leftside  :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "The traders were suspicious...  \n Gain : happiness {image=arrow_down.png} 10 ?"
         $ happiness -= 10
         hide character_sad
@@ -69,15 +85,18 @@ label scenario3:
 
     menu:
         "Declare war and potentially gain ressources":
+            with hpunch
             jump choice3_1
         "Try to negotiate and potentially don’t lose any villagers)":
             jump choice3_2
 
 label choice3_1:
     $ menu_flag = True
+
     if power>=a :
-        show character_fight at left :
+        show character_fight with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "We succeeded in repelling the enemies ! We were able to seize their resources but we lost many fighters and the morale of the village is at its lowest. \n Gain : happiness {image=arrow_down.png} 10, money {image=arrow_up.png} 20, population {image=arrow_down.png} 10, power {image=arrow_up.png} 20"
         $ happiness -=10
         $ money +=20
@@ -86,8 +105,9 @@ label choice3_1:
         hide character_fight
 
     elif power< a :
-        show character_sad at left :
+        show character_sad with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "The enemies were stronger than us, the village was almost destroyed… \n Gain : happiness {image=arrow_down.png} =0, money {image=arrow_down.png} =0, population {image=arrow_down.png} 10, power {image=arrow_down.png} 10"
         $ happiness =0
         $ money =0
@@ -100,8 +120,9 @@ label choice3_1:
 label choice3_2:
     $ menu_flag = True
     if money + power > 40 :
-        show character at left :
+        show character with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "An agreement has been reached with the neighboring village. We lost some resources but gained a great ally.\n Gain : money {image=arrow_down.png} 10, power {image=arrow_up.png} 40"
         $ money -=10
         $ power +=40
@@ -110,6 +131,7 @@ label choice3_2:
     elif money< 70 :
         show character_sad at left :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "An agreement hasn’t been reached, we are paying a heavy tol, \n Gain : money {image=arrow_down.png} /5"
         $ money /=5
         hide character_sad
@@ -124,14 +146,16 @@ label scenario4:
     menu:
         "Offer aid and potentially gain allies":
             jump choice4_1
+            with hpunch
         "Ignore":
             jump choice4_2
 
 label choice4_1:
     $ menu_flag = True
     if power>=p :
-        show character_fight at left :
+        show character_fight with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "We succeeded in repelling the enemies ! We lost some fighters but gained a new ally !\n Gain :money {image=arrow_up.png} 10, population {image=arrow_down.png} 10, power {image=arrow_up.png} 30"
         $ money +=10
         $ population -=10
@@ -139,8 +163,9 @@ label choice4_1:
         hide character_fight
 
     elif power< p :
-        show character_sad at left :
+        show character_sad with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "The enemies were stronger than us, the village was almost destroyed… \n Gain : happiness {image=arrow_down.png} =0, money {image=arrow_down.png} =0, population {image=arrow_down.png} 10, power {image=arrow_down.png} 10"
         $ happiness =0
         $ money =0
@@ -152,8 +177,9 @@ label choice4_1:
 
 label choice4_2:
     $ menu_flag = True
-    show character_sad at left :
+    show character_sad with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
     "You have lost the trust of the people.... \n Gain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
     jump choice_done
@@ -172,8 +198,9 @@ label choice5_1:
     $ a = renpy.random.choice([0,1])
     $ menu_flag = True
     if a==0 :
-        show character at left :
+        show character with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "Good choice! You are strengthening your village. \n Gain : happiness {image=arrow_up.png} 10, money {image=arrow_down.png} 10, population {image=arrow_up.png} 10, power {image=arrow_up.png} 20"
         $ money -=10
         $ population +=10
@@ -182,8 +209,9 @@ label choice5_1:
         hide character
 
     elif a==1 :
-        show character_sad at left :
+        show character_sad with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
         "The traders were suspicious... \n Gain : happiness {image=arrow_down.png} 10, money {image=arrow_down.png} 10"
         $ happiness -= 10
         $ money -= 10
@@ -231,8 +259,9 @@ label scenario7:
 
 label choice7_1:
     $ menu_flag = True
-    show character at left :
+    show character with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
     "Gain : money {image=arrow_down.png} 20, power {image=arrow_up.png} 10"
     $ power += 10
     $ money -= 10
@@ -247,8 +276,9 @@ label choice7_2:
 
 ###################################################### Events positifs
 label scenariop1:
-    show character at left :
+    show character with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
     show text "The fishing of the day has been good! You are earning a lot of resources!" at truecenter
     $ happiness += 20
     $ money += 20
@@ -278,8 +308,9 @@ label choicep2_2:
 
 ###################################################### Events negatifs
 label scenarion1:
-    show character_sad at left :
+    show character_sad with leftside :
         xzoom 0.3 yzoom 0.3
+        xalign 1.0 yalign 1.0
     show text "A disease outbreak is spreading in the village causing some villagers to become ill. \n Gain : happiness {image=arrow_down.png} 5, money {image=arrow_down.png} 5, population {image=arrow_down.png} 10 " at truecenter
     $ happiness -= 5
     $ money -= 5
@@ -288,8 +319,9 @@ label scenarion1:
     jump choice_done
 
 label scenarion2:
-    show character_sad at left :
+    show character_sad with leftside :
             xzoom 0.3 yzoom 0.3
+            xalign 1.0 yalign 1.0
     show text " A severe cold snap has hit the region, causing crops to fail and leaving the village without food.\n Gain : happiness {image=arrow_down.png} 5, money {image=arrow_down.png} 10, population {image=arrow_down.png} 5 " at truecenter
     $ happiness -= 5
     $ money -= 10

@@ -73,6 +73,11 @@ label character_choice:
         xzoom 0.3 yzoom 0.3
     show Character_4 at right :
         xzoom 0.3 yzoom 0.3
+    with Dissolve(.5)
+
+
+    
+ 
     
     show screen stat_box1
     show screen stat_box2
@@ -108,7 +113,8 @@ label character_choice:
     image character2 = DynamicImage("Character_[nb].png" )
     show character2 at tieright :
         xzoom 0.3 yzoom 0.3
-        
+    with Dissolve(.5)
+
     menu:
         "Style 1":
             hide character2
@@ -137,11 +143,14 @@ label world_choice:
             hide ville3
             hide Medieval_Town_4
             scene auroraborealis
+            with irisout
+ 
 
         "Medieval village":
             hide ville3
             hide Medieval_Town_4
             scene medievaltown2
+            with irisout 
             $ world =1
 
     "A little advice before you start, be careful not to let your resources drop to zero..."
