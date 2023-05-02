@@ -28,29 +28,29 @@ screen stat_box1():
     frame:
         align (0.1,0.05)
         vbox:
-            text "Initial power: 20" size 20
-            text "Initial money: 20"size 20
+            text "Initial power: 30" size 20
+            text "Initial money: 30"size 20
 
 screen stat_box2():
     frame:
         align (0.41,0.05)
         vbox:
-            text "Initial power: 10" size 20
-            text "Initial money: 30" size 20
+            text "Initial power: 20" size 20
+            text "Initial money: 40" size 20
 
 screen stat_box3():
     frame:
         align (0.65,0.05)
         vbox:
-            text "Initial power: 20" size 20
-            text "Initial money: 20" size 20
+            text "Initial power: 30" size 20
+            text "Initial money: 30" size 20
 
 screen stat_box4():
     frame:
         align (0.91,0.05)
         vbox:
-            text "Initial power: 30" size 20
-            text "Initial money: 10" size 20
+            text "Initial power: 40" size 20
+            text "Initial money: 20" size 20
 
 
 
@@ -75,10 +75,6 @@ label character_choice:
         xzoom 0.3 yzoom 0.3
     with Dissolve(.5)
 
-
-    
- 
-    
     show screen stat_box1
     show screen stat_box2
     show screen stat_box3
@@ -87,15 +83,23 @@ label character_choice:
     menu:
         "Character 1":
             $ avatar = 1
+            $ power = 30
+            $ money = 30
 
         "Character 2":
             $ avatar = 2
+            $ power = 20
+            $ money = 40
 
         "Character 3":
             $ avatar = 3
+            $ power = 30
+            $ money = 30
 
         "Character 4":
             $ avatar = 4
+            $ power = 40
+            $ money = 20
 
     hide Character_1
     hide Character_2
@@ -126,8 +130,6 @@ label character_choice:
             hide character2
             $ avatar *=10
             jump world_choice
-
-
 
 label world_choice:
     scene path

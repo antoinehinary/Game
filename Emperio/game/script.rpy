@@ -4,29 +4,43 @@ default happiness = 0
 default population = 0
 #default hubmenu = True
 
-
 # The game starts here.
 label start:
     $ money = 10
     $ money_max = 100
-    $ power = 10
+    $ power = 100
     $ power_max = 100
-    $ happiness = 10
+    $ happiness = 20
     $ happiness_max = 100
-    $ population = 10
+    $ population = 20
     $ population_max = 100
     $ world = 0
-    $ list_scenario = ["scenario1" ,"scenario2","scenario3","scenario4","scenario5","scenario6","scenario7","scenariop1","scenariop2","scenarion1","scenarion2"]
-    $ renpy.random.shuffle(list_scenario)
-    $ loop = 0
+    $ list_scenario_1 = ["scenario1" ,"scenario4","scenario5","scenario6","scenario7","scenario9","scenario12"]
+    $ list_scenario_2 = ["scenario2","scenario3","scenario8","scenario10","scenario11","scenario12","scenario13","scenario15","scenario16","scenario17","scenario5","scenario18","scenario19","scenario20","scenario21","scenario22"]
+    $ renpy.random.shuffle(list_scenario_1)
+    $ renpy.random.shuffle(list_scenario_2)
+    $ list_totale = []
+
+#generation de la list effective 
+$ i = 0 
+$ j = 0
+while i < 5 :
+    $ list_totale.append(list_scenario_1[i])
+    $ i += 1
+while j < 15 :
+    $ list_totale.append(list_scenario_2[j])
+    $ j += 1
+$ loop = 0
+$ counter = 0
 
 label game:
     scene path
     jump presentation
 
+
 label choice_done:
     $ hubmenu = True
-    if list_scenario and loop <10 :
+    if list_totale and loop <10 :
         $ loop +=1
         show screen simple_stats_screen
 
@@ -41,6 +55,8 @@ label choice_done:
         if lose >=2:
             jump dead
         if happiness <0 or power <0 or population<=0 :
+            $ population = 0
+            $ power = 0
             jump dead
         if money<0 :
             "Be careful, you are in debt"
@@ -90,7 +106,7 @@ label choice_done:
                 scene medievaltown5
 
         python :
-            renpy.jump(list_scenario.pop(0))
+            renpy.jump(list_totale.pop(0))
     else :
         jump ending
 
