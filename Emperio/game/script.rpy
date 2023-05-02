@@ -16,10 +16,11 @@ label start:
     $ population_max = 100
     $ world = 0
     $ list_scenario_1 = ["scenario1" ,"scenario4","scenario5","scenario6","scenario7","scenario9","scenario12"]
-    $ list_scenario_2 = ["scenario2","scenario3","scenario8","scenario10","scenario11","scenario12","scenario13","scenario15","scenario16","scenario17","scenario5","scenario18","scenario19","scenario20","scenario21","scenario22"]
+    $ list_scenario_2 = ["scenario2","scenario3","scenario8","scenario10","scenario11","scenario13","scenario15","scenario16","scenario17","scenario5","scenario18","scenario19","scenario20","scenario21","scenario22"]
     $ renpy.random.shuffle(list_scenario_1)
     $ renpy.random.shuffle(list_scenario_2)
     $ list_totale = []
+    
 
 #generation de la list effective 
 $ i = 0 
@@ -33,6 +34,7 @@ while j < 15 :
 $ loop = 0
 $ counter = 0
 
+
 label game:
     scene path
     jump presentation
@@ -43,7 +45,6 @@ label choice_done:
     if list_totale and loop <10 :
         $ loop +=1
         show screen simple_stats_screen
-
         #verification of ressources
         $ lose=0
         if money ==0:

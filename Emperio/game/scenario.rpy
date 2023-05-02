@@ -1,6 +1,54 @@
 transform offscrennbottomleft :
     xpos 0.0 xanchor 0.0 ypos 2.0 yanchor 1.0
 
+default counter8 = 0
+default counter9 = 0
+default counter10 = 0
+default counter11 = 0
+default counter12 = 0
+default counter13 = 0
+default counter14 = 0
+default counter15 = 0
+default counter16 = 0
+default counter17 = 0
+default counter18 = 0
+default counter19 = 0
+default counter20 = 0
+default counter21 = 0
+default counter22 = 0
+default counter23 = 0
+default positif8 = False
+default negatif8 = False
+default positif9 = False
+default negatif9 = False
+default positif10 = False
+default negatif10 = False
+default positif11 = False
+default negatif11 = False
+default positif12 = False
+default negatif12 = False
+default positif13 = False
+default negatif13 = False
+default positif14 = False
+default negatif14 = False
+default positif15 = False
+default negatif15 = False
+default positif16 = False
+default negatif16 = False
+default positif17 = False
+default negatif17 = False
+default positif18 = False
+default negatif18 = False
+default positif19 = False
+default negatif19 = False
+default positif20 = False
+default negatif20 = False
+default positif21 = False
+default negatif21 = False
+default choice20_1 = False
+default choice20_2 = False
+default choice20_3 = False
+
 
 define leftside = MoveTransition(delay=0.3,
                                 enter = offscrennbottomleft,
@@ -39,7 +87,7 @@ label choice1_1:
         $ money +=10
         $ population +=10
         hide character
-        jump choice_done
+        jump conditions
 
     elif a==1 :
         show character_sad with leftside  :
@@ -48,7 +96,7 @@ label choice1_1:
         "The traders were suspicious...  \n Gain : happiness {image=arrow_down.png} 10 ?"
         $ happiness -= 10
         hide character_sad
-        jump choice_done
+        jump conditions
 
 label choice1_2:
     $ menu_flag = False
@@ -73,7 +121,7 @@ label choice2_1:
     "You have been able to take care of our village and this leads to an increase in morale and trust of the village in the long term."
     $ happiness +=20
     $ money -=20
-    jump choice_done
+    jump conditions
 
 label choice2_2:
     $ menu_flag = False
@@ -81,7 +129,7 @@ label choice2_2:
     $ money -= 5
     $ happiness -= 20
     $ population -= 10
-    jump choice_done
+    jump conditions
 
 ###################################################### Event3
 label scenario3:
@@ -112,7 +160,7 @@ label choice3_1:
         $ population /=3
         $ power /= 2
 
-    jump choice_done
+    jump conditions
 
 label choice3_2:
     $ menu_flag = True
@@ -125,7 +173,7 @@ label choice3_2:
         "An agreement hasn’t been reached, we go to war"
         jump choice3_1
 
-    jump choice_done
+    jump conditions
 
 ###################################################### Event4
 label scenario4:
@@ -155,13 +203,13 @@ label choice4_1:
         $ population -=10
         $ power =10
 
-    jump choice_done
+    jump conditions
 
 label choice4_2:
     $ menu_flag = True
     "You have lost the trust of the people...."
     $ happiness -=10
-    jump choice_done
+    jump conditions
 
 ###################################################### Event5
 label scenario5:
@@ -190,12 +238,12 @@ label choice5_1:
         $ happiness -= 10
         $ money -= 10
 
-    jump choice_done
+    jump conditions
 
 label choice5_2:
     $ menu_flag = True
     "..."
-    jump choice_done
+    jump conditions
 
 ###################################################### Events Positifs
 label scenario6:
@@ -222,11 +270,11 @@ label choice7_1:
     " Gain : happiness {image=arrow_down.png} 5, power {image=arrow_up.png} 30"
     $ happiness -=5
     $ power += 30
-    jump choice_done
+    jump conditions
 
 label choice7_2:
     $ menu_flag = True
-    jump choice_done
+    jump conditions
 
 
 
@@ -234,6 +282,8 @@ label choice7_2:
 label scenario8:
     $ counter8 = counter
     $ counter += 1
+    $ positif8 = False
+    $ negatif8 = False
     show text "A genius scientist passes by your village and wants to join." at truecenter
 
     menu:
@@ -243,15 +293,17 @@ label scenario8:
             jump choice8_2
 
 label choice8_1:
+    $ positif8 = True
     $ menu_flag = True
     "He was able to create technological advancement but he needed a lot of researche"
     $ population +=10
-    jump choice_done
+    jump conditions
 
 label choice8_2:
+    $ negatif8 = True
     $ menu_flag = True
     "He returned to his home village"
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event9
@@ -281,7 +333,7 @@ label choice9_1:
 label choice9_2:
     $ menu_flag = True
     "You passed on the opportunity"
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event10
@@ -309,13 +361,13 @@ label choice10_1:
         "You failed to create the network on your own"
         $ money -=10
 
-    jump choice_done
+    jump conditions
 
 label choice10_2:
     $ menu_flag = True
     "You have lost an ally"
     $ power -=10
-    jump choice_done
+    jump conditions
 
 ###################################################### Event11
 label scenario11:
@@ -335,21 +387,19 @@ label choice11_1:
     $ money +=20
     $ happiness +=10
     $ population +=10
-    jump choice_done
+    jump conditions
 
 label choice11_2:
     $ menu_flag = True
     "You lost a good opportunity and the people are not satisfied"
     $ happiness -=10
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event12
 label scenario12:
     $ counter12 = counter
     $ counter += 1
-    $ positif12= False
-    $ negatif12 = False
     show text "The village's population has grown exponentially, putting a strain on resources." at truecenter
 
     menu:
@@ -364,7 +414,7 @@ label choice12_1:
     "The population growth was reduced but the people are not happy with your decision"
     $ money +=10
     $ happiness -=20
-    jump choice_done
+    jump conditions
 
 label choice12_2:
     $ negatif12 = True
@@ -372,7 +422,7 @@ label choice12_2:
     "You have gained the love of the people but need to deal with the increase of the population"
     $ money -=20
     $ population +=10
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event13
@@ -392,12 +442,12 @@ label choice13_1:
     "You have formed an alliance and got money but lost power on such lands"
     $ money +=10
     $ power -=10
-    jump choice_done
+    jump conditions
 
 label choice13_2:
     $ menu_flag = True
     "You rejected the land and held you kingdome steady"
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event14
@@ -419,19 +469,17 @@ label choice14_1:
     $ power +=10
     $ happiness +=10
     # $ money += 10 (in 7 turns)
-    jump choice_done
+    jump conditions
 
 label choice14_2:
     $ menu_flag = True
     "You stayed with your current system"
-    jump choice_done
+    jump conditions
 
 ###################################################### Event15
 label scenario15:
     $ counter15 = counter
     $ counter += 1
-    $ positif15 = False
-    $ negatif15 = False
     show text "A neighboring village is experiencing a natural disaster and needs aid. What should we do?" at truecenter
 
     menu:
@@ -443,20 +491,18 @@ label scenario15:
 label choice15_1:
     $ positif15 = True
     #Rep: -money (now) ++power (++ 2 tour) ++happiness (+ 1 tour ++ 2 tour)
-    jump choice_done
+    jump conditions
 
 label choice15_2:
     $ negatif15 = True
     #Rep: -power (- 1 tour) -happiness (- 1 tour)
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event16
 label scenario16:
     $ counter16 = counter
     $ counter += 1
-    $ positif16 = False
-    $ negatif16 = False
     show text "The village's infrastructure, such as roads and buildings, are in need of repair. What should we do?" at truecenter
 
     menu:
@@ -468,13 +514,13 @@ label scenario16:
 label choice16_1:
     $ money -= 10
     #Rep: - money (now) + power (+ 1 tour) + happiness (+ 1 tour)
-    jump choice_done
     $ positif16 = True
+    jump conditions
 
 label choice16_2:
     #Rep: -power (- 1 tour - - 2 tour) - happiness (- 1 tour - - 2 tour)
-    jump choice_done
     $ negatif16 = True
+    jump conditions
 
 
 ###################################################### Event17
@@ -482,8 +528,6 @@ label scenario17:
     $ p = renpy.random.randint(10,100)
     $ counter17 = counter
     $ counter += 1
-    $ positif17 = False
-    $ negatif17 = False
     show text "A new crop has been introduced to the region which can potentially bring in more profits." at truecenter
 
     menu:
@@ -497,12 +541,12 @@ label choice17_1:
         $ positif17 = True
         $ money -=10
     #Rep: - money (now) ++money (++ 2 tour +++ 5 tour) (maybe! P = 95%)
-    jump choice_done
+    jump conditions
 
 label choice17_2:
     $ negatif17 = True
     #Rep: no changes
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event18
@@ -527,7 +571,7 @@ label choice18_1:
     $ menu_flag = True
     "Gain : money {image=arrow_down.png} :20"
     $ money -=20
-    jump choice_done
+    jump conditions
 
 label choice18_2:
     $ negatif18 = True
@@ -537,14 +581,12 @@ label choice18_2:
             xalign 1.0 yalign 1.0
     "The villagers become frustrated with the lack of progress and innovation. \n Gain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
-    jump choice_done
+    jump conditions
 
 ###################################################### Event19
 label scenario19:
     $ counter19 = counter
     $ counter += 1
-    $ positif19= False
-    $ negatif19 = False
     show text "Your village having expanded a lot, do you want to invest in new schools?" at truecenter
 
     menu:
@@ -563,7 +605,7 @@ label choice19_1:
     $ menu_flag = True
     "Gain : money {image=arrow_down.png} :20"
     $ money -=20
-    jump choice_done
+    jump conditions
 
 label choice19_2:
     $ negatif19 = True
@@ -572,18 +614,14 @@ label choice19_2:
     "Gain : happiness {image=arrow_down.png} 10, population {image=arrow_down.png} 10"
     $ happiness -=10
     $ population -=10
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Event20
 label scenario20:
     $ counter20 = counter
     $ counter += 1
-    $ choice20_1 = False
-    $ choice20_2 = False
-    $ choice20_3 = False
-    show text "A technological breakthrough presents the opportunity to increase the village’s wealth and resources, but some members of the population are
-concerned about the ethical implications of the technology and the player must decide whether to pursue it or not." at truecenter
+    show text "A technological breakthrough presents the opportunity to increase the village’s wealth and resources, but some members of the population areconcerned about the ethical implications of the technology and the player must decide whether to pursue it or not." at truecenter
 
     menu:
         "Make a significant investment in science research and development, despite the high costs.":
@@ -608,7 +646,7 @@ label choice20_1:
     $ menu_flag = True
     " Gain : money {image=arrow_down.png}30"
     $ money -=30
-    jump choice_done
+    jump conditions
 
 label choice20_2:
     $ choice20_2 = True
@@ -623,7 +661,7 @@ label choice20_3:
     $ menu_flag = True
     "Gain : money {image=arrow_down.png} 10"
     $ money -=10
-    jump choice_done
+    jump conditions
 
 
 ###################################################### Events negatifs
@@ -636,7 +674,7 @@ label scenario21:
     $ money -= 5
     $ population -= 10
     hide character_sad
-    jump choice_done
+    jump conditions
 
 label scenario22:
     show character_sad with leftside :
@@ -647,26 +685,27 @@ label scenario22:
     $ money -= 10
     $ population -= 5
     hide character_sad
-    jump choice_done
-$ m = 0
-while m < 23 :
-    if m == 8 and counter > (counter8):
+    jump conditions
+
+label conditions: 
+    if counter > (counter8) and negatif8 == True:
         $ money += 10 
-    if m == 8 and counter > (counter8 + 1):
+    if counter > (counter8 + 1) and negatif8 == True:
         $ money += 20
-    if m == 9 and counter > (counter9):
+    if counter > (counter9) and negatif9 == True:
         $ money += 10 
-    if m == 9 and counter > (counter9 + 1):
-        $ money += 20
-    if m == 9 and counter > (counter9 + 2):
-        $ money += 30
-    if m == 10 and counter > (counter10 + 2):
-        $ money += 20
-    if m == 9 and counter > (counter10):
-        $ power += 10
-    if m == 11 and counter > (counter11):
+    if counter > (counter9 + 1) and negatif9 == True:
         $ money += 10
-    if m == 11 and counter > (counter11 + 1):
+    if counter > (counter9 + 2) and negatif9 == True:
+        $ money += 10
+        $negatif9 = False
+    if counter > (counter10 + 2):
+        $ money += 20
+    if counter > (counter10):
+        $ power += 10
+    if counter > (counter11):
+        $ money += 10
+    if counter > (counter11 + 1):
         $ happiness += 10
     if counter > (counter12) and negatif12 == True:
         $ population += 10
@@ -675,47 +714,48 @@ while m < 23 :
     if counter > (counter12 + 2) and negatif12 == True:
         $ population += 10
         $ negatif12 = False
-    if m == 14 and counter > (counter14):
+    if counter > (counter14):
         $ power += 10
         $ happiness += 10
-    if m == 14 & counter > (counter14 + 2):
+    if counter > (counter14 + 2):
         $ money += 10
-    if m == 15 & counter > (counter15 + 1) and (positif15 == True):
+    if counter > (counter15 + 1) and (positif15 == True):
         $ power += 20
         $ happiness += 10
-    if m == 15 and counter > (counter15 + 1) and (negatif15 == True):
+    if counter > (counter15 + 1) and (negatif15 == True):
         $ power -= 10
         $ happiness -= 10
-    if m == 16 & counter > (counter16) and (positif16 == True):
+    if counter > (counter16) and (positif16 == True):
         $ power += 10
         $ happiness += 10
-    if m == 16 and counter > (counter16) and (negatif16 == True):
+    if counter > (counter16) and (negatif16 == True):
         $ power -= 10
         $ happiness -= 10
-    if m == 16 and counter > (counter16 + 1) and (negatif16 == True):
+    if counter > (counter16 + 1) and (negatif16 == True):
         $ power -= 20
         $ happiness -= 20
-    if m == 17 and counter > (counter17) and (positif17 == True):
+    if counter > (counter17) and (positif17 == True):
         $ money += 20
         $ happiness -= 10
-    if m == 17 and counter > (counter17 + 1) and (negatif17 == True):
+    if counter > (counter17 + 1) and (negatif17 == True):
         $ money += 10
-    if m == 18 and counter > (counter18 + 1) and (positif18 == True):
+    if counter > (counter18 + 1) and (positif18 == True):
         $ power += 10
         $ happiness += 10
-    if m == 19 and counter > (counter19 + 1) and (positif19 == True):
+    if counter > (counter19 + 1) and (positif19 == True):
         $ power += 10
         $ happiness += 10   
         $ money += 10
-    if m == 19 and counter > (counter19 + 1) and (negatif19 == True):
+    if counter > (counter19 + 1) and (negatif19 == True):
         $ happiness -= 10
         $ population -= 10
-    if m == 20 and counter > (counter20 + 1) and (choice20_1 == True):
+    if counter > (counter20 + 1) and (choice20_1 == True):
         $ happiness += 30
         $power += 30
-    if m == 20 and counter > (counter20 + 1) and (choice20_2 == True):
+    if counter > (counter20 + 1) and (choice20_2 == True):
         $ happiness += 20
         $ power += 20
-    if m == 20 and counter > (counter19 + 1) and (choice20_3 == True):
+    if counter > (counter19 + 1) and (choice20_3 == True):
         $ happiness -= 10
         $ population += 10
+    jump choice_done
