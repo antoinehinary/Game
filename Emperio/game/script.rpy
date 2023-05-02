@@ -15,9 +15,24 @@ label start:
     $ happiness_max = 100
     $ population = 10
     $ population_max = 100
-    $ list_scenario = ["scenario1" ,"scenario2","scenario3","scenario4","scenario5"]
-    $ renpy.random.shuffle(list_scenario)
-    $ loop = 0
+    $ list_scenario_1 = ["scenario1" ,"scenario2","scenario3","scenario4","scenario5","scenario6","scenario7"]
+    $ list_scenario_2 = ["scenario8","scenario9","scenario10","scenario11","scenario12","scenario12","scenario13","scenario15","scenario16","scenario17","scenario5","scenario18","scenario19","scenario20","scenario21","scenario22"]
+    $ renpy.random.shuffle(list_scenario_1)
+    $ renpy.random.shuffle(list_scenario_2)
+    $ list_totale = []
+
+#generation de la list effective 
+$ i = 0 
+$ j = 0
+while i < 5 :
+    $ list_totale.append(list_scenario_1[i])
+    $ i += 1
+while j < 15 :
+    $ list_totale.append(list_scenario_2[j])
+    $ j += 1
+$ loop = 0
+$ counter = 0
+    
 
 label game:
     scene auroraborealis
@@ -28,7 +43,7 @@ label game:
     jump scenario1
 
 label choice_done:
-    if list_scenario and loop <10 :
+    if list_totale and loop <10 :
         $ loop +=1
         show screen simple_stats_screen
 
@@ -70,7 +85,7 @@ label choice_done:
             scene ville3
 
         python :
-            renpy.jump(list_scenario.pop(0))
+            renpy.jump(list_totale.pop(0))
     else :
         jump ending
 
