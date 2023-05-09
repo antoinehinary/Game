@@ -28,29 +28,29 @@ screen stat_box1():
     frame:
         align (0.1,0.05)
         vbox:
-            text "Initial power: 30" size 20
-            text "Initial money: 30"size 20
+            text "Initial power: 20" size 20
+            text "Initial money: 20"size 20
 
 screen stat_box2():
     frame:
         align (0.41,0.05)
         vbox:
-            text "Initial power: 20" size 20
-            text "Initial money: 40" size 20
+            text "Initial power: 10" size 20
+            text "Initial money: 30" size 20
 
 screen stat_box3():
     frame:
         align (0.65,0.05)
         vbox:
-            text "Initial power: 30" size 20
-            text "Initial money: 30" size 20
+            text "Initial power: 20" size 20
+            text "Initial money: 20" size 20
 
 screen stat_box4():
     frame:
         align (0.91,0.05)
         vbox:
-            text "Initial power: 40" size 20
-            text "Initial money: 20" size 20
+            text "Initial power: 30" size 20
+            text "Initial money: 10" size 20
 
 
 
@@ -83,23 +83,23 @@ label character_choice:
     menu:
         "Character 1":
             $ avatar = 1
-            $ power = 30
-            $ money = 30
+            $ power = 20
+            $ money = 20
 
         "Character 2":
             $ avatar = 2
-            $ power = 20
-            $ money = 40
+            $ power = 10
+            $ money = 30
 
         "Character 3":
             $ avatar = 3
-            $ power = 30
-            $ money = 30
+            $ power = 20
+            $ money = 20
 
         "Character 4":
             $ avatar = 4
-            $ power = 40
-            $ money = 20
+            $ power = 30
+            $ money = 10
 
     hide Character_1
     hide Character_2
@@ -133,7 +133,7 @@ label character_choice:
 
 label world_choice:
     scene path
-    "Please choose the world you would like to play in. This will impact the type of event you will have to face"
+    "Please choose the world you would like to play in. This will impact the type of event you will have to face."
     show ville3 :
         xalign 0.1 yalign 0.5
         xzoom 0.4 yzoom 0.4

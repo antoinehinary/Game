@@ -1,28 +1,48 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/scenario.rpy", line 30, in script
+  File "game/scenario.rpy", line 783, in script
     show character with leftside :
-TypeError: MoveTransition() got an unexpected keyword argument 'time_wrap'
+TypeError: unsupported operand type(s) for *: 'MoveInterpolate' and 'float'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/scenario.rpy", line 30, in script
+  File "game/scenario.rpy", line 783, in script
     show character with leftside :
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\ast.py", line 1658, in execute
+  File "renpy/ast.py", line 1658, in execute
     renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\exports.py", line 1657, in with_statement
+  File "renpy/exports.py", line 1657, in with_statement
     return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\display\core.py", line 2798, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\display\core.py", line 3377, in interact
+  File "renpy/display/core.py", line 2801, in do_with
+    clear=clear)
+  File "renpy/display/core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\Camille CHALLIER\Documents\Etudes\epfl\Bachelor\BA6\SHS\renpy-8.0.3-sdk\renpy\display\core.py", line 3752, in interact_core
-    trans = self.ongoing_transition[None](
-TypeError: MoveTransition() got an unexpected keyword argument 'time_wrap'
+  File "renpy/display/core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2605, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "renpy/display/layout.py", line 897, in render
+    offset = child.place(rv, 0, 0, width, height, surf)
+  File "renpy/display/core.py", line 638, in place
+    placement = self.get_placement()
+  File "renpy/display/movetransition.py", line 438, in get_placement
+    xpos = I(old_xpos, new_xpos)
+  File "renpy/display/movetransition.py", line 433, in I
+    return absolute(a + done * (b - a))
+TypeError: unsupported operand type(s) for *: 'MoveInterpolate' and 'float'
 
-Windows-10-10.0.19044 AMD64
-Ren'Py 8.0.3.22090809
+Windows-10-10.0.19041 AMD64
+Ren'Py 7.5.3.22090809
 Emperio 1.0
-Mon Apr 10 09:27:58 2023
+Tue May  9 13:40:03 2023

@@ -2,9 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/begin.rpy", line 69: expected 'comma or end of line' not found.
-    with slideleft,
-    ^
+File "game/script.rpy", line 157: if statement expects a non-empty block.
+    if power <50 :
+                  ^
 
-Ren'Py Version: Ren'Py 8.0.3.22090809
-Thu Apr  6 17:29:09 2023
+File "game/script.rpy", line 160: if statement expects a non-empty block.
+    if money <50 :
+                  ^
+
+File "game/script.rpy", line 163: if statement expects a non-empty block.
+    if happiness <50 :
+                      ^
+
+File "game/script.rpy", line 166: if statement expects a non-empty block.
+    if population <50 :
+                       ^
+
+Ren'Py Version: Ren'Py 7.5.3.22090809
+Mon May  8 23:36:31 2023
