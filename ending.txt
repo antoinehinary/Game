@@ -1,0 +1,17 @@
+label ending:
+    "The Game ended you have: "
+    "Money: [money]{p}Power: [power]{p}Happiness: [happiness]{p}Population: [population]"
+    if (money <= 0 or happiness <= 0 or power <= 0 or population <= 0):
+        if money <= 0:
+            "you were not carefull with your money"
+        if power <= 0:
+            "you were not carefull with your power"
+        if happiness <= 0:
+            "you were not carefull with your happiness"
+            "you can try the {a=https://findahelpline.com/ch}Helpline{\a}"
+        if population <= 0:
+            "you were not carefull with your population"
+    else :
+        "Well Done"
+    "The end."
+    return
