@@ -93,7 +93,7 @@ label choice1_1:
         show character_sad with leftside  :
             xzoom 0.3 yzoom 0.3
             xalign 1.0 yalign 1.0
-        "The traders were suspicious...  \n Gain : happiness {image=arrow_down.png} 10 ?"
+        "The traders were suspicious...  \n Gain : happiness {image=arrow_down.png} 10 "
         $ happiness -= 10
         hide character_sad
         jump conditions
@@ -194,7 +194,7 @@ label choice4_1:
         "We succeeded in repelling the enemies ! We lost some fighters but gained a new ally !"
         $ money +=10
         $ population -=10
-        $ power +=30
+        $ power +=20
 
     elif power< p :
         "The enemies were stronger than us, the village was almost destroyed…"
@@ -269,7 +269,7 @@ label choice7_1:
     $ menu_flag = True
     " Gain : happiness {image=arrow_down.png} 5, power {image=arrow_up.png} 30"
     $ happiness -=5
-    $ power += 30
+    $ power += 20
     jump conditions
 
 label choice7_2:
@@ -384,7 +384,7 @@ label scenario11:
 label choice11_1:
     $ menu_flag = True
     "The workshop was a great success"
-    $ money +=20
+    $ money +=10
     $ happiness +=10
     $ population +=10
     jump conditions
@@ -413,14 +413,14 @@ label choice12_1:
     $ menu_flag = True
     "The population growth was reduced but the people are not happy with your decision"
     $ money +=10
-    $ happiness -=20
+    $ happiness -=10
     jump conditions
 
 label choice12_2:
     $ negatif12 = True
     $ menu_flag = True
     "You have gained the love of the people but need to deal with the increase of the population"
-    $ money -=20
+    $ money -=10
     $ population +=10
     jump conditions
 
