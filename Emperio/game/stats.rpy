@@ -64,29 +64,29 @@ screen end_stats_screen:
         xysize(480,132)
         value money 
         range money_max
-        xalign 0.5
-        yalign 0.02
+        xalign 0.25
+        yalign 0.12
         left_bar Frame("money_idle.png", 5,0)
         right_bar Frame("money_empty.png",2,0)
         left_gutter 49
         right_gutter 8
         thumb None
         thumb_shadow None
-    text "Money : [money] /[money_max]" size 25 xalign 0.555 yalign 0.105
+    text "Money : [money] /[money_max]" size 25 xalign 0.345 yalign 0.2
 
     bar:
         xysize(500,132)
         value power
         range power_max
-        xalign 0.508
-        yalign 0.16
+        xalign 0.253
+        yalign 0.26
         left_bar Frame("power_idle.png",10,0)
         right_bar Frame("power_empty.png",5,0)
         left_gutter 49
         right_gutter 20
         thumb None
         thumb_shadow None
-    text "Power : [power] /[power_max]" size 25 xalign 0.555 yalign 0.23
+    text "Power : [power] /[power_max]" size 25 xalign 0.345 yalign 0.33
    
     bar:
         xysize(480,132)
@@ -94,13 +94,13 @@ screen end_stats_screen:
         range happiness_max
         left_bar Frame("happiness_idle.png", 5,0)
         right_bar Frame("happiness_empty.png", 5,0)
-        xalign 0.5
-        yalign 0.3
+        xalign 0.25
+        yalign 0.4
         left_gutter 50
         right_gutter 12
         thumb None
         thumb_shadow None
-    text "Happiness : [happiness] /[happiness_max]" size 25 xalign 0.56 yalign 0.36
+    text "Happiness : [happiness] /[happiness_max]" size 25 xalign 0.35 yalign 0.45
 
     bar:
         xysize(480,132)
@@ -108,17 +108,47 @@ screen end_stats_screen:
         range population_max
         left_bar Frame("population_idle.png",2,0)
         right_bar Frame("population_empty.png",5,0)
-        xalign 0.503
-        yalign 0.44
+        xalign 0.253
+        yalign 0.54
         left_gutter 47
         right_gutter 11
         thumb None
         thumb_shadow None
-    text "Population : [population] /[population_max]" size 25 xalign 0.56 yalign 0.48
+    text "Population : [population] /[population_max]" size 25 xalign 0.35 yalign 0.58
 
-    text "Total score : [score] / 400" size 40 xalign 0.5 yalign 0.55
+    frame:
+        xsize 460
+        ysize 60
+        xalign 0.5
+        yalign 0.7
 
-## Screen with Stats Button
+        text "Total score : [score] / 400" :
+            size 40
+
+    vbox:
+        align (0.7, 0.22)
+        spacing 85  
+        frame:
+            text money_rank :
+                color "#e8ba01"
+                size 40 #xalign 0.8 yalign 0.14
+        frame :
+            text power_rank  :
+                color "#c226ea"
+                size 40 #xalign 0.8 yalign 0.27
+        frame :
+            text happiness_rank :
+                color "#da2222"
+                size 40 #xalign 0.8 yalign 0.4
+        frame :
+            text population_rank :
+                color "#02e5e5"
+                size 40 #xalign 0.8 yalign 0.52
+
+
+
+
+## Screen with indices
 screen gameUI:
     imagebutton:
         xalign 0.1
@@ -130,8 +160,14 @@ screen gameUI:
         
 ## Stats UI
 screen StatsUI:
-    add "auroraborealis.png"
-    text tips size 40 xalign 0.1,0.8
+    add "path.png"
+    frame:
+        xsize 500
+        ysize 500
+        xalign 0.5
+        yalign 0.5
+        has vbox spacing 2
+        text tips size 35 
      
     ## Show a Return button
     imagebutton:
@@ -142,3 +178,35 @@ screen StatsUI:
         auto "UI/return_%s.png"
         action Return()
 
+
+###################################################### Credits
+
+## Screen with Stats Button
+screen credit_UI:
+    imagebutton:
+        xalign 1.0
+        yalign 0.0
+        xoffset -30
+        yoffset 30
+        auto "UI/credit_%s.png"
+        action ShowMenu("Statcredit")
+
+## Stats UI
+screen Statcredit:
+    add "path.png"
+    frame:
+        xsize 900
+        ysize 900
+        xalign 0.5
+        yalign 0.5
+        has vbox spacing 2
+        text "Credits : \n\nBackgrounds : \nhttps://maxmeents.itch.io/228-free-medieval-town-backgrounds \n& \nhttps://lornn.itch.io/fantasy-ice-and-snow-backgrounds \n\nTips/credit button : \nhttps://zeillearnings.itch.io/stats-ui \n\nCharacters : \nhttps://pochipochihouse.itch.io/ \n\nStat bar : \nhttps://gamedeveloperstudio.itch.io/meters-and-levels \n\nGame made by : Tristan Broccard, Anthony Dawoud, Antoine Hinary & Camille Challier" size 35 
+     
+    ## Show a Return button
+    imagebutton:
+        xalign 1.0
+        yalign 0.0
+        xoffset -30
+        yoffset 30
+        auto "UI/return_%s.png"
+        action Return()

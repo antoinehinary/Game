@@ -23,35 +23,58 @@ label start:
     $ RestrictRange("power", -1, 100)
     $ RestrictRange("happiness", -1, 100)
     $ RestrictRange("population", 0, 100)
-    $ money = 10
+    $ money = 50
     $ money_max = 100
-    $ power = 10
+    $ power = 50
     $ power_max = 100
-    $ happiness = 10
+    $ happiness = 50
     $ happiness_max = 100
-    $ population = 10
+    $ population = 50
     $ population_max = 100
     $ world = 0
     $ turns_max = 15
-    $ list_scenario_1 = ["scenario4","scenario5","scenario6","scenario7","scenario9","scenario12"]
-    $ list_scenario_2 = ["scenario2","scenario3","scenario8","scenario10","scenario11","scenario13","scenario15","scenario16","scenario17","scenario5","scenario18","scenario19","scenario20","scenario21","scenario22"]
-    $ renpy.random.shuffle(list_scenario_1)
-    $ renpy.random.shuffle(list_scenario_2)
-    $ list_totale = []
-    $ tips = "bjhvj"
-    show screen gameUI
 
-#generation de la list effective 
-$ i = 0 
-$ j = 0
-while i < 3 :
-    $ list_totale.append(list_scenario_1[i])
-    $ i += 1
-while j < 12 :
-    $ list_totale.append(list_scenario_2[j])
-    $ j += 1
-$ loop = 0
-$ counter = 0
+    $ scenario_chill = ["scenario1","scenario7"]
+    $ renpy.random.shuffle(scenario_chill)
+    $ scenario_war =  ["scenario4","scenario3"]
+    $ renpy.random.shuffle(scenario_war)
+    $ scenario_money =  ["scenario2","scenario5"]
+    $ renpy.random.shuffle(scenario_money)
+    $ scenario_invest_little =  ["scenario8","scenario14"]
+    $ renpy.random.shuffle(scenario_invest_little)
+    $ scenario_big_invest =  ["scenario10","scenario18","scenario19","scenario20"]
+    $ renpy.random.shuffle(scenario_big_invest)
+    $ scenario_hard_invest =["scenario16","scenario12"]
+    $ renpy.random.shuffle(scenario_hard_invest)
+    $ scenario_random_invest = ["scenario17","scenario9","scenario10"]
+    $ renpy.random.shuffle(scenario_random_invest)
+    $ scenario_neg = ["scenario21","scenario22"]
+    $ renpy.random.shuffle(scenario_neg)
+    $ scenario_posi = ["scenario6","scenario15"]
+    $ renpy.random.shuffle(scenario_posi)
+    $ scenario_mid_game = ["scenario13","scenario11"]
+    $ renpy.random.shuffle(scenario_mid_game)
+    $ list_totale = []
+
+    #generation de la list effective 
+    $ list_totale.append(scenario_chill[0])
+    $ list_totale.append(scenario_invest_little[0])
+    $ list_totale.append(scenario_posi[0])
+    $ list_totale.append(scenario_big_invest[0])
+    $ list_totale.append(scenario_mid_game[0])
+    $ list_totale.append(scenario_neg[0])
+    $ list_totale.append(scenario_random_invest[0])
+    $ list_totale.append(scenario_war[0])
+    $ list_totale.append(scenario_money[0])
+    $ list_totale.append(scenario_chill[1])
+    $ list_totale.append(scenario_neg[1])
+    $ list_totale.append(scenario_big_invest[2])
+    $ list_totale.append(scenario_war[1])
+    $ list_totale.append(scenario_hard_invest[0])
+    $ list_totale.append(scenario_random_invest[1])
+    
+    $ loop = 0
+    $ counter = 0
 
 label game:
     scene path
@@ -140,31 +163,3 @@ label choice_done:
             renpy.jump(list_totale.pop(0))
     else :
         jump ending
-
-label dead:
-    "You lose"
-            
-label ending:
-    $ power =50
-    $ score = power+money+happiness+population
-    hide text
-    hide screen simple_stats_screen
-    show screen end_stats_screen
-
-    "Show ranking/results (to do)"
-
-    if power <50 :
-        "Tips : Look carefully at your village's power before fighting ! "
-    
-    if money <50 :
-        "Tips : You have only 15 turns to play, maybe it is better to not invest much at the end of the game... "
-    
-    if happiness <50 :
-        "Tips : Invest in what is useful so you don't run out of money during key moments!"
-    
-    if population <50 :
-        "Tips : Invest in your village to attract people and expend your population !"
-
-    "The end."
-
-    return

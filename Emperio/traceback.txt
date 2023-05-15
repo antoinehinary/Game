@@ -1,48 +1,48 @@
 ï»¿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/scenario.rpy", line 783, in script
-    show character with leftside :
-TypeError: unsupported operand type(s) for *: 'MoveInterpolate' and 'float'
+  File "game/end.rpy", line 51, in script
+    "Congratulations on completing the game! Here are the results of your village's progress."
+WindowsError: [Error 32] Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus: u'C:\\Users\\Camille CHALLIER\\Documents\\Etudes\\epfl\\Bachelor\\BA6\\SHS\\Emperio\\game\\saves\\persistent'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/scenario.rpy", line 783, in script
-    show character with leftside :
-  File "renpy/ast.py", line 1658, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "renpy/exports.py", line 1657, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "renpy/display/core.py", line 2801, in do_with
-    clear=clear)
+  File "game/end.rpy", line 51, in script
+    "Congratulations on completing the game! Here are the results of your village's progress."
+  File "renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "renpy/character.py", line 930, in do_display
+    **display_args)
+  File "renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "renpy/display/core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "renpy/display/core.py", line 3912, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "renpy/display/core.py", line 2605, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 495, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "renpy/display/layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "renpy/display/layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "renpy/display/layout.py", line 897, in render
-    offset = child.place(rv, 0, 0, width, height, surf)
-  File "renpy/display/core.py", line 638, in place
-    placement = self.get_placement()
-  File "renpy/display/movetransition.py", line 438, in get_placement
-    xpos = I(old_xpos, new_xpos)
-  File "renpy/display/movetransition.py", line 433, in I
-    return absolute(a + done * (b - a))
-TypeError: unsupported operand type(s) for *: 'MoveInterpolate' and 'float'
+  File "renpy/display/core.py", line 4040, in interact_core
+    self.idle_frame(can_block, expensive)
+  File "renpy/display/core.py", line 3514, in idle_frame
+    renpy.persistent.check_update()
+  File "renpy/persistent.py", line 360, in check_update
+    update()
+  File "renpy/persistent.py", line 397, in update
+    save()
+  File "renpy/persistent.py", line 413, in save
+    renpy.loadsave.location.save_persistent(data)
+  File "renpy/savelocation.py", line 494, in save_persistent
+    l.save_persistent(data)
+  File "renpy/savelocation.py", line 349, in save_persistent
+    safe_rename(fn_new, fn)
+  File "renpy/loadsave.py", line 286, in safe_rename
+    os.unlink(new)
+WindowsError: [Error 32] Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus: u'C:\\Users\\Camille CHALLIER\\Documents\\Etudes\\epfl\\Bachelor\\BA6\\SHS\\Emperio\\game\\saves\\persistent'
 
 Windows-10-10.0.19041 AMD64
 Ren'Py 7.5.3.22090809
 Emperio 1.0
-Tue May  9 13:40:03 2023
+Thu May 11 15:04:04 2023

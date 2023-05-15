@@ -157,4 +157,4 @@ label world_choice:
 
     "A little advice before you start, be careful not to let your resources drop to zero..."
     $ hubmenu = True
-    jump scenario1
+    jump choice_done

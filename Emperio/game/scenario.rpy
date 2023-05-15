@@ -56,7 +56,7 @@ label no_money :
     jump conditions
 
 label scenario1:
-    $ tips = "bjhvj"
+    $ tips = "If you choose to trust the traders, you may as well gain power and population but also lose happiness in the event of a scam."
     show screen gameUI
     $counter += 1
     $ counter1 = counter
@@ -64,10 +64,10 @@ label scenario1:
     show text "A group of traders arrives in the village with exotic goods, but some members of the population object to their presence. Should we allow the traders to stay ?" at truecenter
 
     menu:
-        "Yes and potentially increase wealth." :
+        "Yes and potentially increase money." :
             hide screen gameUI
             jump choice1_1
-        "Ask them to leave to potentially preserve morale.":
+        "Ask them to leave to potentially preserve happiness.":
             hide screen gameUI
             jump choice1_2
 
@@ -128,16 +128,24 @@ label choice2_2:
 
 ###################################################### Event3
 label scenario3:
+    $ tips = "Tips : Look carefully at your village's power before fighting ! "
+    show screen gameUI
     $ counter += 1
     $ counter3 = counter
     $ a = renpy.random.randint(10,100)
-    show text "A neighboring tribe (power = %d) is attacking the village, what should we do ?" % a at truecenter
+
+    if (world == 0 ):
+        show text "A neighboring tribe (power = %d) is attacking the village, what should we do ?" % a at truecenter
+    elif (world == 1) :
+        show text "A neighboring castle (power = %d) is attacking the village, what should we do ?" % a at truecenter
 
     menu:
         "Declare war and potentially gain ressources":
             with hpunch
+            hide screen gameUI
             jump choice3_1
         "Try to negotiate and potentially don’t lose any villagers)":
+            hide screen gameUI
             jump choice3_2
 
 label choice3_1:
@@ -196,6 +204,8 @@ label choice3_2:
 
 ###################################################### Event4
 label scenario4:
+    $ tips = "Tips : Look carefully at your village's power before fighting ! "
+    show screen gameUI
     $ counter += 1
     $ counter4 = counter
     $ p = renpy.random.randint(10,100)
@@ -203,8 +213,10 @@ label scenario4:
 
     menu:
         "Offer aid and potentially gain allies":
+            hide screen gameUI
             jump choice4_1
         "Ignore":
+            hide screen gameUI
             jump choice4_2
 
 label choice4_1:
@@ -246,13 +258,17 @@ label choice4_2:
 
 ###################################################### Event5
 label scenario5:
+    $ tips = " If you choose to trust the nomads, you may as well gain power and population but also lose money and happiness in the event of a scam."
+    show screen gameUI
     $ counter += 1
-    show text "A group of nomads passes through the village, offering to share their knowledge of survival skills in exchange for resources." at truecenter
+    show text "A group of nomads passes through the village, offering to share their knowledge of survival skills in exchange of money." at truecenter
 
     menu:
         "Trust the nomads and potentially gain valuable skills":
+            hide screen gameUI
             jump choice5_1
         "Reject their offer and preserve resources":
+            hide screen gameUI
             jump choice5_2
 
 label choice5_1:
@@ -291,7 +307,13 @@ label scenario6:
     show character with leftside :
             xzoom 0.3 yzoom 0.3
             xalign 1.0 yalign 1.0
-    "The fishing of the day has been good! You are earning a lot of resources!"
+
+    if (world == 0 ):
+        show text "The fishing of the day has been good! You are earning a lot of resources!" at truecenter
+        "\n Gain : happiness {image=arrow_up.png} 20, money {image=arrow_up.png} 20"
+    elif if (world == 1 ):
+        show text "The hunt of the day has been good! You are earning a lot of resources!" at truecenter
+        "\n Gain : happiness {image=arrow_up.png} 20, money {image=arrow_up.png} 20"
     $ happiness += 20
     $ money += 20
     hide character
@@ -300,7 +322,7 @@ label scenario6:
 
 label scenario7:
     $ counter += 1
-    show text "A neighboring village offers an alliance to our village. Some members of the population are suspicious… Do you accept the offer and potentially gain allies, or reject it and potentially preserve morale ?" at truecenter
+    show text "A neighboring village offers an alliance to our village. Some members of the population are suspicious… Do you accept the offer and gain allies, or reject it and potentially preserve happiness ?" at truecenter
     menu:
         "Sign an alliance.":
             jump choice7_1
@@ -322,13 +344,17 @@ label choice7_2:
 
 ###################################################### Event8 : The Genius
 label scenario8:
+    $ tips = "Scientific researches can brought in money but needs a first investissement"
+    show screen gameUI
     $ counter += 1
     show text "A genius scientist passes by your village and wants to join." at truecenter
 
     menu:
         "Hire him":
+            hide screen gameUI
             jump choice8_1
         "Ask him to leave.":
+            hide screen gameUI
             jump choice8_2
 
 label choice8_1:
@@ -348,14 +374,22 @@ label choice8_2:
 
 ###################################################### Event9
 label scenario9:
+    $ tips = "An investement can be a success or a failure... Up to you to estimate if you can take the risk !"
+    show screen gameUI
     $ counter += 1
     $ p = renpy.random.randint(10,100)
-    show text "A new technology has become available for purchase. What should we do? " at truecenter
+
+    if (world == 0 ):
+        show text "A new artisanry has become available for purchase. What should we do? " at truecenter
+    elif (world == 1 ):
+        show text "A new war machine has become available for purchase. What should we do? " at truecenter
 
     menu:
         "Invest in purchasing the technology and potentially increase production or efficiency":
+            hide screen gameUI
             jump choice9_1
         "Do not purchase the technology and save resources for other needs.":
+            hide screen gameUI
             jump choice9_2
 
 label choice9_1:
@@ -380,14 +414,18 @@ label choice9_2:
 
 ###################################################### Event10
 label scenario10:
+    $ tips = "An investement can be a success or a failure... Up to you to estimate if you can take the risk !"
+    show screen gameUI
     $ counter += 1
     $ p = renpy.random.randint(10,100)
-    show text "A rival village has become a major player in the region's trade network. " at truecenter
+    show text "A rival village has become a major player in the region's trade network." at truecenter
 
     menu:
         "Invest in developing our own trade network and potentially increase profits.":
+            hide screen gameUI
             jump choice10_1
-        "Do not purchase the technology and save resources for other needs.":
+        "Do not invest and save resources for other needs.":
+            hide screen gameUI
             jump choice10_2
 
 label choice10_1:
@@ -413,13 +451,17 @@ label choice10_2:
 
 ###################################################### Event11
 label scenario11:
+    $ tips = "The worshop can be a success or a failure... Up to you to estimate if you can take the risk !"
+    show screen gameUI
     $ counter += 1
     show text "A group of skilled craftsmen has offered to set up a workshop in the village" at truecenter
 
     menu:
         "Allow the craftsmen to set up shop and potentially increase the village's production capabilities.":
+            hide screen gameUI
             jump choice11_1
         "Reject the offer and potentially miss out on production opportunities.":
+            hide screen gameUI
             jump choice11_2
 
 label choice11_1:
@@ -449,13 +491,17 @@ label choice11_2:
 
 ###################################################### Event12
 label scenario12:
+    $ tips = "Establish this low will make the population unhappy but you will keep all your other ressources. \n If you ignore it, the population of the village will increase and this will cost you a lot of money."
+    show screen gameUI
     $ counter += 1
     show text "The village's population has grown exponentially, putting a strain on resources." at truecenter
 
     menu:
         "Enforce a law forbidding people from having more than 1 child.":
+            hide screen gameUI
             jump choice12_1
         "Ignore it and ensure the population's happiness.":
+            hide screen gameUI
             jump choice12_2
 
 label choice12_1:
@@ -482,7 +528,7 @@ label scenario13:
     show text "A nearby wealthy village offered to buy land from your village." at truecenter
 
     menu:
-        "Sell the land and potentially increase profits.":
+        "Sell the land to make money.":
             jump choice13_1
         "Reject the offer.":
             jump choice13_2
@@ -535,7 +581,7 @@ label scenario15:
     show text "A neighboring village is experiencing a natural disaster and needs aid. What should we do?" at truecenter
 
     menu:
-        "Provide aid to the neighboring village and potentially gain allies.":
+        "Provide aid to the neighboring village and potentially gain allies and power.":
             jump choice15_1
         "Ignore the situation and potentially damage relations with the neighboring village.":
             jump choice15_2
@@ -555,6 +601,8 @@ label choice15_2:
 
 ###################################################### Event16
 label scenario16:
+    $ tips = "I hope that you have enough money to invest in this event or it will be disastrous..."
+    show screen gameUI
     $ counter += 1
     $ counter16 = counter
     $ actif16 = True
@@ -563,8 +611,10 @@ label scenario16:
     menu:
         "Invest in repairing the infrastructure and potentially improve efficiency.":
             if money >= 20 :
+                hide screen gameUI
                 jump choice16_1
             else :
+                hide screen gameUI
                 jump no_money
         "Ignore the problem and potentially risk safety and efficiency but save money.":
             jump choice16_2
@@ -590,8 +640,7 @@ label scenario17:
     show text "A new crop has been introduced to the region which can potentially bring in more profits." at truecenter
 
     menu:
-        "Invest in testing and cultivating the new crop and potentially increase profits.":
-            
+        "Invest in testing and cultivating the new crop and potentially increase money.":
             if money >= 20 :
                 jump choice17_1
             else :
@@ -665,10 +714,8 @@ label choice19_1:
     # Rep: ++happiness, ++power, + argent (3 tours)
     $ menu_flag = True
     "Gain : money {image=arrow_down.png} :20"
-    if money >= 30 :
-        jump conditions
-    else :
-        jump no_money
+    $ money -=20
+    jump conditions
 
 label choice19_2:
     $ negatif19 = True
@@ -682,6 +729,8 @@ label choice19_2:
 
 ###################################################### Event20
 label scenario20:
+    $ tips = "The more you invest, the better the reward but the higher the risk is."
+    show screen gameUI
     $ counter += 1
     $ counter20 = counter
     $ actif20 = True
@@ -690,18 +739,24 @@ label scenario20:
     menu:
         "Make a significant investment in science research and development, despite the high costs.":
             if money >= 30 :
+                hide screen gameUI
                 jump choice20_1
             else :
+                hide screen gameUI
                 jump no_money
         "Make a moderate investment in science research and development, balancing the need for progress with fiscal responsibility.":
             if money >= 20 :
+                hide screen gameUI
                 jump choice20_2
             else :
+                hide screen gameUI
                 jump no_money
         "Make a minimal investment in science research and development, citing the high costs and the need to prioritize other pressing needs." :
             if money >= 10 :
+                hide screen gameUI
                 jump choice20_3
             else :
+                hide screen gameUI
                 jump no_money
 
 label choice20_1:
@@ -745,7 +800,11 @@ label scenario22:
     show character_sad with leftside :
             xzoom 0.3 yzoom 0.3
             xalign 1.0 yalign 1.0
-    show text " A severe cold snap has hit the region, causing crops to fail and leaving the village without food.\n Gain : happiness {image=arrow_down.png} 5, money {image=arrow_down.png} 10, population {image=arrow_down.png} 5 " at truecenter
+    if world == 0 :
+        show text " A severe cold snap has hit the region, causing crops to fail and leaving the village without food." at truecenter
+    elif world == 1 :
+        show text " A severe drought has hit the region, causing crops to fail and leaving the village without food." at truecenter
+    "Gain : happiness {image=arrow_down.png} 5, money {image=arrow_down.png} 10, population {image=arrow_down.png} 5"
     $ happiness -= 5
     $ money -= 10
     $ population -= 5
