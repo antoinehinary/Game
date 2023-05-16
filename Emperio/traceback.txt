@@ -1,48 +1,24 @@
 ï»¿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/end.rpy", line 51, in script
-    "Congratulations on completing the game! Here are the results of your village's progress."
-WindowsError: [Error 32] Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus: u'C:\\Users\\Camille CHALLIER\\Documents\\Etudes\\epfl\\Bachelor\\BA6\\SHS\\Emperio\\game\\saves\\persistent'
+  File "game/scenario.rpy", line 322, in script
+    if (world == 0 ):
+SyntaxError: invalid syntax (scenario.rpy, line 326)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/end.rpy", line 51, in script
-    "Congratulations on completing the game! Here are the results of your village's progress."
-  File "renpy/ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1266, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/character.py", line 930, in do_display
-    **display_args)
-  File "renpy/character.py", line 666, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3377, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "renpy/display/core.py", line 4040, in interact_core
-    self.idle_frame(can_block, expensive)
-  File "renpy/display/core.py", line 3514, in idle_frame
-    renpy.persistent.check_update()
-  File "renpy/persistent.py", line 360, in check_update
-    update()
-  File "renpy/persistent.py", line 397, in update
-    save()
-  File "renpy/persistent.py", line 413, in save
-    renpy.loadsave.location.save_persistent(data)
-  File "renpy/savelocation.py", line 494, in save_persistent
-    l.save_persistent(data)
-  File "renpy/savelocation.py", line 349, in save_persistent
-    safe_rename(fn_new, fn)
-  File "renpy/loadsave.py", line 286, in safe_rename
-    os.unlink(new)
-WindowsError: [Error 32] Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus: u'C:\\Users\\Camille CHALLIER\\Documents\\Etudes\\epfl\\Bachelor\\BA6\\SHS\\Emperio\\game\\saves\\persistent'
+  File "game/scenario.rpy", line 322, in script
+    if (world == 0 ):
+  File "renpy/ast.py", line 2115, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 1090, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 1027, in py_compile
+    raise e
+SyntaxError: invalid syntax (scenario.rpy, line 326)
 
 Windows-10-10.0.19041 AMD64
 Ren'Py 7.5.3.22090809
 Emperio 1.0
-Thu May 11 15:04:04 2023
+Mon May 15 15:48:27 2023

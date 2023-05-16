@@ -123,13 +123,23 @@ label character_choice:
         "Style 1":
             hide character2
             hide character
-            jump world_choice
+            $ world = 0
+            scene auroraborealis
+            with irisout
+            "A little advice before you start, be careful not to let your resources drop to zero..."
+            $ hubmenu = True
+            jump choice_done
 
         "Style 2":
             hide character
             hide character2
             $ avatar *=10
-            jump world_choice
+            $ world = 0
+            scene auroraborealis
+            with irisout
+            "A little advice before you start, be careful not to let your resources drop to zero..."
+            $ hubmenu = True
+            jump choice_done
 
 label world_choice:
     scene path
@@ -158,3 +168,79 @@ label world_choice:
     "A little advice before you start, be careful not to let your resources drop to zero..."
     $ hubmenu = True
     jump choice_done
+
+label level_2 :
+    $ situation = "Would you like to try our second level ?"
+    $ world = 1
+    hide screen end_stats_screen
+    hide screen credit_UI
+    show screen s
+    menu :
+        "Yes" :
+            hide screen s
+            $ world = 1
+            jump start2
+        "No" :
+            hide screen s
+            jump end 
+    
+label start2 :
+    hide text
+    "You will now embody a medieval village chief. \nGood luck!"
+    $ RestrictRange("money", -10, 100)
+    $ RestrictRange("power", -1, 100)
+    $ RestrictRange("happiness", -1, 100)
+    $ RestrictRange("population", 0, 100)
+    $ money = 10
+    $ money_max = 100
+    $ power = 10
+    $ power_max = 100
+    $ happiness = 10
+    $ happiness_max = 100
+    $ population = 10
+    $ population_max = 100
+    $ world = 0
+    $ turns_max = 10
+
+    $ scenario_chill = ["scenario1","scenario7"]
+    $ renpy.random.shuffle(scenario_chill)
+    $ scenario_war =  ["scenario4","scenario3"]
+    $ renpy.random.shuffle(scenario_war)
+    $ scenario_money =  ["scenario2","scenario5"]
+    $ renpy.random.shuffle(scenario_money)
+    $ scenario_invest_little =  ["scenario8","scenario14"]
+    $ renpy.random.shuffle(scenario_invest_little)
+    $ scenario_big_invest =  ["scenario10","scenario18","scenario19","scenario20"]
+    $ renpy.random.shuffle(scenario_big_invest)
+    $ scenario_hard_invest =["scenario16","scenario12"]
+    $ renpy.random.shuffle(scenario_hard_invest)
+    $ scenario_random_invest = ["scenario17","scenario9","scenario10"]
+    $ renpy.random.shuffle(scenario_random_invest)
+    $ scenario_neg = ["scenario21","scenario22"]
+    $ renpy.random.shuffle(scenario_neg)
+    $ scenario_posi = ["scenario6","scenario15"]
+    $ renpy.random.shuffle(scenario_posi)
+    $ scenario_mid_game = ["scenario13","scenario11"]
+    $ renpy.random.shuffle(scenario_mid_game)
+    $ list_totale = []
+
+    #generation de la list effective 
+
+    $ list_totale.append(scenario_invest_little[0])
+    $ list_totale.append(scenario_posi[0])
+    $ list_totale.append(scenario_chill[0])
+    $ list_totale.append(scenario_hard_invest[0])
+    $ list_totale.append(scenario_mid_game[0])
+    $ list_totale.append(scenario_neg[0])
+    $ list_totale.append(scenario_random_invest[0])
+    $ list_totale.append(scenario_war[0])
+    $ list_totale.append(scenario_money[0])
+    $ list_totale.append(scenario_big_invest[2])
+
+    #$ list_totale = ["scenario6","scenario15", "scenario16","scenario17", "scenario18","scenario19", "scenario20","scenario21", "scenario22"]
+    
+    $ loop = 0
+    $ counter = 0
+    $ world = 1
+    jump choice_done
+

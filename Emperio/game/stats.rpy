@@ -126,7 +126,7 @@ screen end_stats_screen:
             size 40
 
     vbox:
-        align (0.7, 0.22)
+        align (0.9, 0.22)
         spacing 85  
         frame:
             text money_rank :
@@ -160,7 +160,10 @@ screen gameUI:
         
 ## Stats UI
 screen StatsUI:
-    add "path.png"
+    if world == 0 :
+        add "auroraborealis.png"
+    elif world == 1:
+        add "medievaltown2.png"
     frame:
         xsize 500
         ysize 500
@@ -193,7 +196,10 @@ screen credit_UI:
 
 ## Stats UI
 screen Statcredit:
-    add "path.png"
+    if world == 0 :
+        add "auroraborealis.png"
+    elif world == 1:
+        add "medievaltown2.png"
     frame:
         xsize 900
         ysize 900
@@ -210,3 +216,18 @@ screen Statcredit:
         yoffset 30
         auto "UI/return_%s.png"
         action Return()
+
+screen s :
+    frame:
+        background Solid("#00000050")     # or use any semi-transparent image you like
+        align (0.5, 0.4)
+        
+        side "c r":
+            area (0, 0, 1000, 160)
+
+            viewport id "vp":
+                draggable True
+
+                vbox:
+                    text situation
+            vbar value YScrollValue("vp")

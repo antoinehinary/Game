@@ -23,13 +23,13 @@ label start:
     $ RestrictRange("power", -1, 100)
     $ RestrictRange("happiness", -1, 100)
     $ RestrictRange("population", 0, 100)
-    $ money = 50
+    $ money = 10
     $ money_max = 100
-    $ power = 50
+    $ power = 10
     $ power_max = 100
-    $ happiness = 50
+    $ happiness = 20
     $ happiness_max = 100
-    $ population = 50
+    $ population = 20
     $ population_max = 100
     $ world = 0
     $ turns_max = 15
@@ -57,6 +57,7 @@ label start:
     $ list_totale = []
 
     #generation de la list effective 
+
     $ list_totale.append(scenario_chill[0])
     $ list_totale.append(scenario_invest_little[0])
     $ list_totale.append(scenario_posi[0])
@@ -72,6 +73,8 @@ label start:
     $ list_totale.append(scenario_war[1])
     $ list_totale.append(scenario_hard_invest[0])
     $ list_totale.append(scenario_random_invest[1])
+
+    #$ list_totale = ["scenario6","scenario15", "scenario16","scenario17", "scenario18","scenario19", "scenario20","scenario21", "scenario22"]
     
     $ loop = 0
     $ counter = 0
@@ -107,11 +110,11 @@ label choice_done:
     if money >= 100:
         $ money = 100
     if happiness >= 100:
-        $ money = 100
+        $ happiness = 100
     if power >= 100:
-        $ money = 100
+        $ power = 100
     if population >= 100:
-        $ money = 100
+        $ population = 100
     
     #Background choice
     $ moy = (money+power+happiness+population)/4
@@ -157,7 +160,7 @@ label choice_done:
         else:
             scene medievaltown5
 
-    if list_totale and loop <15 :
+    if list_totale and loop <turns_max :
         $ loop +=1
         python :
             renpy.jump(list_totale.pop(0))

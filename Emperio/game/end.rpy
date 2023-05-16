@@ -1,6 +1,17 @@
 label dead:
-    show screen credit_UI
     "You lose"
+    "The Game ended you have:"
+    "Money: [money]{p}Power: [power]{p}Happiness: [happiness]{p}Population: [population]"
+    if (money <= 0 or happiness <= 0 or power <= 0 or population <= 0):
+        if money <= 0:
+            "You were not carefull with your money. \nTips : You have only 15 turns to play, maybe it is better to not invest much at the end of the game... "
+        if power <= 0:
+            "You were not carefull with your power. \nTips : Look carefully at your village's power before fighting ! "
+        if happiness <= 0:
+            "You were not carefull with your happiness. \nYou can try the {a=https://findahelpline.com/ch}Helpline{\a} \n Tips : Invest in what is useful so you don't run out of money during key moments!"
+        if population <= 0:
+            "You were not carefull with your population. \nTips : Invest in your village to attract people and expend your population !"
+    jump end
             
 label ending:
     show screen credit_UI
@@ -50,18 +61,33 @@ label ending:
 
     "Congratulations on completing the game! Here are the results of your village's progress."
 
-    if power <50 :
-        "Tips : Look carefully at your village's power before fighting ! "
-    
-    if money <50 :
-        "Tips : You have only 15 turns to play, maybe it is better to not invest much at the end of the game... "
-    
-    if happiness <50 :
-        "Tips : Invest in what is useful so you don't run out of money during key moments!"
-    
-    if population <50 :
-        "Tips : Invest in your village to attract people and expend your population !"
+    if world == 0 : 
+        if power <50 :
+            "Tips : Look carefully at your village's power before fighting ! "
+        
+        if money <50 :
+            "Tips : You have only 15 turns to play, maybe it is better to not invest much at the end of the game... "
+        
+        if happiness <50 :
+            "Tips : Invest in what is useful so you don't run out of money during key moments!"
+        
+        if population <50 :
+            "Tips : Invest in your village to attract people and expend your population !"
+    if world == 1 :
+        if score >= 350 :
+            "You obtain the title of {color=#f00}Emperor/Empress{/color} !"
+        elif score >= 300 :
+            "You obtain the title of {color=#f00}Duke/Duchess{/color} !"
+        elif score >= 200 :
+            "You obtain the title of {color=#f00}Count/Countess{/color} !"
+        elif score >= 0 :
+            "You obtain the title of {color=#f00}Baron/Baroness{/color} !"
+    if world == 0 :
+        jump level_2
+    elif world == 1 :
+        jump end
 
-    "The end."
 
+label end :
+    "Thank you for playing, hope to see you soon ;) \nThe end."
     return
