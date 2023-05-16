@@ -49,6 +49,10 @@ default choice20_1 = False
 default choice20_2 = False
 default choice20_3 = False
 
+#-------------------------#
+# music use 
+#play music "music/sucess.mp3"
+#-------------------------#
 
 define leftside = MoveTransition(delay=0.3,
                                 enter = offscrennbottomleft,
@@ -84,6 +88,10 @@ label choice1_1:
             xalign 1.0 yalign 1.0
  
         "The traders bring novelty to the village! \n Gain : money {image=arrow_up.png} 10, population {image=arrow_up.png} 10"
+        $ music_file = "music/success.mp3"
+        play music music_file
+        pause 7
+        stop music
         $ money +=10
         $ population +=10
         hide character
@@ -93,7 +101,11 @@ label choice1_1:
         show character_sad with leftside  :
             xzoom 0.3 yzoom 0.3
             xalign 1.0 yalign 1.0
-        "The traders were suspicious...  \n Gain : happiness {image=arrow_down.png} 10 "
+        "The traders were suspicious...  \n Gain : happiness {image=arrow_down.png} 10 "   
+        $ music_file = "music/sad.mp3"
+        play music music_file
+        pause 5
+        stop music
         $ happiness -= 10
         hide character_sad
         jump conditions
@@ -119,6 +131,10 @@ label scenario2:
 label choice2_1:
     $ menu_flag = True
     "You have been able to take care of our village and this leads to an increase in morale and trust of the village in the long term."
+    $ music_file = "music/cheers.mp3"
+    play music music_file
+    pause 6
+    stop music
     $ happiness +=20
     $ money -=20
     jump conditions
@@ -126,6 +142,10 @@ label choice2_1:
 label choice2_2:
     $ menu_flag = False
     "The village resents you for keeping these resources, and you lost a few people."
+    $ music_file = "music/boo.mp3"
+    play music music_file
+    pause 4
+    stop music
     $ money -= 5
     $ happiness -= 20
     $ population -= 10
@@ -148,6 +168,10 @@ label choice3_1:
     $ menu_flag = True
     if power>=a :
         "We succeeded in repelling the enemies ! We were able to seize their resources but we lost many fighters and the morale of the village is at its lowest."
+        $ music_file = "music/wardrums.mp3"
+        play music music_file
+        pause 4
+        stop music
         $ happiness -=10
         $ money +=10
         $ population -=10
@@ -155,6 +179,10 @@ label choice3_1:
 
     elif power< a :
         "The enemies were stronger than us, the village was almost destroyed…"
+        $ music_file = "music/explosion.mp3"
+        play music music_file
+        pause 4
+        stop music
         $ happiness /=2
         $ money /=2
         $ population /=3
@@ -166,11 +194,16 @@ label choice3_2:
     $ menu_flag = True
     if money> 30 :
         "An agreement has been reached with the neighboring village. We lost some resources but gained a great ally."
+
         $ money -=10
         $ power +=40
 
     elif money <= 30 :
         "An agreement hasn’t been reached, we go to war"
+        $ music_file = "music/wardrums.mp3"
+        play music music_file
+        pause 4
+        stop music
         jump choice3_1
 
     jump conditions
@@ -192,12 +225,20 @@ label choice4_1:
     $ menu_flag = True
     if power>=p :
         "We succeeded in repelling the enemies ! We lost some fighters but gained a new ally !"
+        $ music_file = "music/cheers.mp3"
+        play music music_file
+        pause 4
+        stop music
         $ money +=10
         $ population -=10
         $ power +=20
 
     elif power< p :
         "The enemies were stronger than us, the village was almost destroyed…"
+        $ music_file = "music/horns.mp3"
+        play music music_file
+        pause 5
+        stop music
         $ happiness =0
         $ money =0
         $ population -=10
@@ -228,6 +269,7 @@ label choice5_1:
     $ menu_flag = True
     if a < 80 :
         "Good choice! You are strengthening your village."
+
         $ money -=10
         $ population +=10
         $ happiness +=10
@@ -268,6 +310,10 @@ label scenario7:
 label choice7_1:
     $ menu_flag = True
     " Gain : happiness {image=arrow_down.png} 5, power {image=arrow_up.png} 30"
+    $ music_file = "music/cheers.mp3"
+    play music music_file
+    pause 4
+    stop music
     $ happiness -=5
     $ power += 20
     jump conditions
@@ -296,6 +342,10 @@ label choice8_1:
     $ positif8 = True
     $ menu_flag = True
     "He was able to create technological advancement but he needed a lot of researche"
+    $ music_file = "music/success.mp3"
+    play music music_file
+    pause 4
+    stop music
     $ population +=10
     jump conditions
 
@@ -326,6 +376,10 @@ label choice9_1:
 
     else:
         "The research came back without a reslut"
+        $ music_file = "music/sad.mp3"
+        play music music_file
+        pause 4
+        stop music
         $ money -=10
 
     jump choice_done
@@ -353,6 +407,10 @@ label choice10_1:
     $ menu_flag = True
     if 60 >= p :
         "The network is successfully built"
+        $ music_file = "music/cheers.mp3"
+        play music music_file
+        pause 4
+        stop music
         $ money -=20
         $ power +=10
         $ population +=10
@@ -366,6 +424,10 @@ label choice10_1:
 label choice10_2:
     $ menu_flag = True
     "You have lost an ally"
+    $ music_file = "music/wardrums.mp3"
+    play music music_file
+    pause 4
+    stop music
     $ power -=10
     jump conditions
 
@@ -412,6 +474,10 @@ label choice12_1:
     $ positif12= True
     $ menu_flag = True
     "The population growth was reduced but the people are not happy with your decision"
+    $ music_file = "music/boo.mp3"
+    play music music_file
+    pause 4
+    stop music
     $ money +=10
     $ happiness -=10
     jump conditions
@@ -429,7 +495,7 @@ label choice12_2:
 label scenario13:
     $ counter13 = counter
     $ counter += 1
-    show text "T A nearby wealthy village offered to buy land from your village." at truecenter
+    show text " A nearby wealthy village offered to buy land from your village." at truecenter
 
     menu:
         "Sell the land and potentially increase profits.":
@@ -440,6 +506,10 @@ label scenario13:
 label choice13_1:
     $ menu_flag = True
     "You have formed an alliance and got money but lost power on such lands"
+    $ music_file = "music/money.mp3"
+    play music music_file
+    pause 4
+    stop music
     $ money +=10
     $ power -=10
     jump conditions
@@ -537,7 +607,7 @@ label scenario17:
             jump choice17_2
 
 label choice17_1:
-    if p < 95 :
+    if p < 65 :
         $ positif17 = True
         $ money -=10
     #Rep: - money (now) ++money (++ 2 tour +++ 5 tour) (maybe! P = 95%)
@@ -569,6 +639,10 @@ label choice18_1:
     $ positif18 = True
     # Rep: ++happiness ++power (2 tours)
     $ menu_flag = True
+    $ music_file = "music/money.mp3"
+    play music music_file
+    pause 4
+    stop music
     "Gain : money {image=arrow_down.png} :20"
     $ money -=20
     jump conditions
@@ -642,6 +716,10 @@ label scenario20:
 
 label choice20_1:
     $ choice20_1 = True
+    $ music_file = "music/success.mp3"
+    play music music_file
+    pause 4
+    stop music
     # Rep : +++happiness, +++power (2tours)
     $ menu_flag = True
     " Gain : money {image=arrow_down.png}30"

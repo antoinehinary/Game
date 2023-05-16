@@ -1,32 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 192, in script
-    python:
-  File "renpy/common/00start.rpy", line 193, in <module>
-    renpy.execute_default_statement(True)
-  File "game/screens.rpy", line 303, in set_default
-    default quick_menu = True
-Exception: store.quick_menu is being given a default a second time.
+  File "game/scenario.rpy", line 92, in script
+    play music music_file
+  File "renpy/common/000statements.rpy", line 123, in execute_play_music
+    renpy.music.play(_audio_eval(p["file"]),
+TypeError: cannot use a string pattern on a bytes-like object
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 192, in script
-    python:
-  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/ast.py", line 1131, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/python.py", line 1061, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00start.rpy", line 193, in <module>
-    renpy.execute_default_statement(True)
-  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/exports.py", line 3797, in execute_default_statement
-    i.set_default(start)
-  File "game/screens.rpy", line 303, in set_default
-    default quick_menu = True
-Exception: store.quick_menu is being given a default a second time.
+  File "game/scenario.rpy", line 92, in script
+    play music music_file
+  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/ast.py", line 2232, in execute
+    self.call("execute")
+  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/ast.py", line 2220, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/statements.py", line 281, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 123, in execute_play_music
+    renpy.music.play(_audio_eval(p["file"]),
+  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/audio/music.py", line 132, in play
+    c.enqueue(filenames, loop=loop, synchro_start=synchro_start, fadein=fadein, tight=tight, loop_only=loop_only, relative_volume=relative_volume)
+  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/audio/audio.py", line 651, in enqueue
+    filename, _, _ = self.split_filename(filename, False)
+  File "/Users/isaacadel/Desktop/EPFL/BA6/Jeu video et gamification/renpy-8.0.3-sdk/renpy/audio/audio.py", line 371, in split_filename
+    m = re.match(r'<(.*)>(.*)', filename)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/re.py", line 191, in match
+TypeError: cannot use a string pattern on a bytes-like object
 
 macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.0.3.22090809
 Emperio 1.0
-Tue May  2 15:07:24 2023
+Mon May 15 18:23:46 2023

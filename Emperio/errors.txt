@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/scenario.rpy", line 724: expected statement.
-    ifcounter > (counter15 + 1) and (negatif15 == True):
-              ^
+File "game/scenario.rpy", line 240: expected end of line.
+    pause 5s
+           ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Tue May  2 14:58:57 2023
+Tue May 16 17:34:23 2023
