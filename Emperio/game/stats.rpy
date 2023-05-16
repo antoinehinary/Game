@@ -146,31 +146,93 @@ screen end_stats_screen:
                 size 40 #xalign 0.8 yalign 0.52
 
 
-
-
-## Screen with indices
+#################################################### Screen with indices
 screen gameUI:
     imagebutton:
-        xalign 0.1
-        yalign 0.95
+        xalign 0.08
+        yalign 0.9
         xoffset -30
         yoffset 30
         idle "UI/loupe.png"
         action ShowMenu("StatsUI")
         
 ## Stats UI
-screen StatsUI:
+screen StatsUI:    
     if world == 0 :
         add "auroraborealis.png"
     elif world == 1:
         add "medievaltown2.png"
     frame:
-        xsize 500
-        ysize 500
-        xalign 0.5
-        yalign 0.5
-        has vbox spacing 2
-        text tips size 35 
+        background Solid("#00000090")     # or use any semi-transparent image you like
+        align (0.5, 0.4)
+        
+        side "c r":
+            area (0, 0, 1000, 150)
+
+            viewport id "vp":
+                draggable True
+
+                vbox:
+                    text tips
+            vbar value YScrollValue("vp")
+
+    ## Show a Return button
+    imagebutton:
+        xalign 1.0
+        yalign 0.0
+        xoffset -30
+        yoffset 30
+        auto "UI/return_%s.png"
+        action Return()
+
+################################################## theory
+
+image perso animated:
+
+    "attack_extra0.png"
+    pause 1.0
+    "attack_extra1.png"
+    pause 0.15
+    "attack_extra2.png"
+    pause 0.15
+    "attack_extra3.png"
+    pause 0.15
+    "attack_extra4.png"
+    pause 0.15
+    "attack_extra5.png"
+    pause 0.15
+    "attack_extra6.png"
+    repeat
+
+screen theory:
+
+    imagebutton:
+        xalign 0.15
+        yalign 0.95
+        xoffset -30
+        yoffset 30
+        idle "transp.png"
+        action ShowMenu("TheoryUI")
+        
+## Stats UI
+screen TheoryUI:
+    if world == 0 :
+        add "auroraborealis.png"
+    elif world == 1:
+        add "medievaltown2.png"
+    frame:
+        background Solid("#00000090")     # or use any semi-transparent image you like
+        align (0.5, 0.4)
+        
+        side "c r":
+            area (0, 0, 1000, 320)
+
+            viewport id "vp":
+                draggable True
+
+                vbox:
+                    text theory_text
+            vbar value YScrollValue("vp")
      
     ## Show a Return button
     imagebutton:
@@ -196,18 +258,27 @@ screen credit_UI:
 
 ## Stats UI
 screen Statcredit:
+
     if world == 0 :
         add "auroraborealis.png"
     elif world == 1:
         add "medievaltown2.png"
     frame:
-        xsize 900
-        ysize 900
-        xalign 0.5
-        yalign 0.5
-        has vbox spacing 2
-        text "Credits : \n\nBackgrounds : \nhttps://maxmeents.itch.io/228-free-medieval-town-backgrounds \n& \nhttps://lornn.itch.io/fantasy-ice-and-snow-backgrounds \n\nTips/credit button : \nhttps://zeillearnings.itch.io/stats-ui \n\nCharacters : \nhttps://pochipochihouse.itch.io/ \n\nStat bar : \nhttps://gamedeveloperstudio.itch.io/meters-and-levels \n\nGame made by : Tristan Broccard, Anthony Dawoud, Antoine Hinary & Camille Challier" size 35 
-     
+        background Solid("#00000090")     # or use any semi-transparent image you like
+        align (0.5, 0.4)
+        
+        side "c r":
+            area (0, 0, 1000, 850)
+
+            viewport id "vp":
+                draggable True
+
+                vbox:
+                    text "{b}Credits{/b} : \n\n{b}Backgrounds{/b} : \nhttps://maxmeents.itch.io/228-free-medieval-town-backgrounds \n& \nhttps://lornn.itch.io/fantasy-ice-and-snow-backgrounds \n\n{b}Tips/credit button{/b} : \nhttps://zeillearnings.itch.io/stats-ui \n\n{b}Characters{/b} : \nhttps://pochipochihouse.itch.io/ \n\n{b}Stat bar{/b} : \nhttps://gamedeveloperstudio.itch.io/meters-and-levels \n\n{b}Game made by{/b} : Tristan Broccard, Anthony Dawoud, Antoine Hinary & Camille Challier" size 35 
+            vbar value YScrollValue("vp")
+
+
+
     ## Show a Return button
     imagebutton:
         xalign 1.0

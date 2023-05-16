@@ -53,12 +53,11 @@ screen stat_box4():
             text "Initial money: 10" size 20
 
 
-
-
 label presentation:
     scene path
     "Welcome to Imperio, a strategy game where you play the role of the chief of a small village and your goal is to increase the resources and prosperity of your community by making smart choices during events." 
-    "As the chief, you will need to balance the needs of your people with the demands of your expanding village, making sure that your population is happy and thriving."
+    "As the chief, you will need to balance the needs of your people with the demands of your expanding village, making sure that your population is happy and thriving."  
+
     jump character_choice
 
 label character_choice:

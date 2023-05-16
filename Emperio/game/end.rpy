@@ -22,18 +22,18 @@ label ending:
     if population <= 25 :
         $ population_rank = "Ghost Town"
     elif population <= 50 :
-        $ population_rank = "Baby Boomtown" 
+        $ population_rank = "The borders are a little too closed..."
     elif population <= 75 :
-        $ population_rank = "Growing Like Weeds"
+        $ population_rank = "Baby Boomtown"
     elif population <= 100 : 
-        $  population_rank = "The Packed-est Place on Earth"
+        $  population_rank = "Growing Like Weeds"
 
     if money <= 25 :
         $ money_rank = "Penniless Place"
     elif money <= 50 :
         $ money_rank = "Counting Pennies" 
     elif money <= 75 :
-        $ money_rank = "Scrooge McDuck's Dream"
+        $ money_rank = "Pixou's Dream"
     elif money <= 100 : 
         $ money_rank = "Filthy Rich"
 

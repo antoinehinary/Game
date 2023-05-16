@@ -27,14 +27,14 @@ label start:
     $ money_max = 100
     $ power = 10
     $ power_max = 100
-    $ happiness = 20
+    $ happiness = 10
     $ happiness_max = 100
-    $ population = 20
+    $ population = 10
     $ population_max = 100
     $ world = 0
     $ turns_max = 15
 
-    $ scenario_chill = ["scenario1","scenario7"]
+    $ scenario_chill = ["scenario1","scenario7", "scenario23"]
     $ renpy.random.shuffle(scenario_chill)
     $ scenario_war =  ["scenario4","scenario3"]
     $ renpy.random.shuffle(scenario_war)
@@ -42,7 +42,7 @@ label start:
     $ renpy.random.shuffle(scenario_money)
     $ scenario_invest_little =  ["scenario8","scenario14"]
     $ renpy.random.shuffle(scenario_invest_little)
-    $ scenario_big_invest =  ["scenario10","scenario18","scenario19","scenario20"]
+    $ scenario_big_invest =  ["scenario10","scenario18","scenario19","scenario20", "scenario24"]
     $ renpy.random.shuffle(scenario_big_invest)
     $ scenario_hard_invest =["scenario16","scenario12"]
     $ renpy.random.shuffle(scenario_hard_invest)
@@ -57,7 +57,6 @@ label start:
     $ list_totale = []
 
     #generation de la list effective 
-
     $ list_totale.append(scenario_chill[0])
     $ list_totale.append(scenario_invest_little[0])
     $ list_totale.append(scenario_posi[0])
@@ -74,7 +73,8 @@ label start:
     $ list_totale.append(scenario_hard_invest[0])
     $ list_totale.append(scenario_random_invest[1])
 
-    #$ list_totale = ["scenario6","scenario15", "scenario16","scenario17", "scenario18","scenario19", "scenario20","scenario21", "scenario22"]
+    $ list_totale = ["scenario1", "scenario2","scenario3", "scenario4","scenario5", "scenario6","scenario7","scenario8", "scenario9","scenario10", "scenario11","scenario12", "scenario13","scenario14","scenario15", "scenario16","scenario17", "scenario18","scenario19", "scenario20","scenario21", "scenario22","scenario23", "scenario24"]
+    $ list_totale = ["scenario1"]
     
     $ loop = 0
     $ counter = 0
@@ -115,6 +115,9 @@ label choice_done:
         $ power = 100
     if population >= 100:
         $ population = 100
+    if (population >= 75) and ( counter %2 == 0) :
+        "Your large population brought in money ! \nGain : money {image=arrow_up.png} 5"
+        $money += 5
     
     #Background choice
     $ moy = (money+power+happiness+population)/4
