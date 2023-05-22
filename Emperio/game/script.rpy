@@ -73,9 +73,6 @@ label start:
     $ list_totale.append(scenario_hard_invest[0])
     $ list_totale.append(scenario_random_invest[1])
 
-    $ list_totale = ["scenario1", "scenario2","scenario3", "scenario4","scenario5", "scenario6","scenario7","scenario8", "scenario9","scenario10", "scenario11","scenario12", "scenario13","scenario14","scenario15", "scenario16","scenario17", "scenario18","scenario19", "scenario20","scenario21", "scenario22","scenario23", "scenario24"]
-    $ list_totale = ["scenario1"]
-    
     $ loop = 0
     $ counter = 0
 

@@ -18,40 +18,6 @@ transform tieright:
 transform tierleft:
     xalign 0.8 yalign 1.0
 
-default avatar = 1
-image character = DynamicImage("Character_[avatar].png" )
-image character_fight = DynamicImage("Character_[avatar]_fight.png" )
-image character_sad = DynamicImage("Character_[avatar]_sad.png" )
-
-
-screen stat_box1():
-    frame:
-        align (0.1,0.05)
-        vbox:
-            text "Initial power: 20" size 20
-            text "Initial money: 20"size 20
-
-screen stat_box2():
-    frame:
-        align (0.41,0.05)
-        vbox:
-            text "Initial power: 10" size 20
-            text "Initial money: 30" size 20
-
-screen stat_box3():
-    frame:
-        align (0.65,0.05)
-        vbox:
-            text "Initial power: 20" size 20
-            text "Initial money: 20" size 20
-
-screen stat_box4():
-    frame:
-        align (0.91,0.05)
-        vbox:
-            text "Initial power: 30" size 20
-            text "Initial money: 10" size 20
-
 
 label presentation:
     scene path
@@ -60,85 +26,6 @@ label presentation:
 
     jump character_choice
 
-label character_choice:
-
-    "Choose your character before we begin - each character has unique strengths and weaknesses that will impact gameplay !"
-    $ hubmenu = False
-    show Character_1 at left :
-        xzoom 0.3 yzoom 0.3
-    show Character_2 at midleft :
-        xzoom 0.3 yzoom 0.3
-    show Character_3 at midright :
-        xzoom 0.3 yzoom 0.3
-    show Character_4 at right :
-        xzoom 0.3 yzoom 0.3
-    with Dissolve(.5)
-
-    show screen stat_box1
-    show screen stat_box2
-    show screen stat_box3
-    show screen stat_box4
-    
-    menu:
-        "Character 1":
-            $ avatar = 1
-            $ power = 20
-            $ money = 20
-
-        "Character 2":
-            $ avatar = 2
-            $ power = 10
-            $ money = 30
-
-        "Character 3":
-            $ avatar = 3
-            $ power = 20
-            $ money = 20
-
-        "Character 4":
-            $ avatar = 4
-            $ power = 30
-            $ money = 10
-
-    hide Character_1
-    hide Character_2
-    hide Character_3
-    hide Character_4
-    hide screen stat_box1
-    hide screen stat_box2
-    hide screen stat_box3
-    hide screen stat_box4
-
-    show character at tierleft :
-        xzoom 0.3 yzoom 0.3
-
-    $ nb = avatar*10
-    image character2 = DynamicImage("Character_[nb].png" )
-    show character2 at tieright :
-        xzoom 0.3 yzoom 0.3
-    with Dissolve(.5)
-
-    menu:
-        "Style 1":
-            hide character2
-            hide character
-            $ world = 0
-            scene auroraborealis
-            with irisout
-            "A little advice before you start, be careful not to let your resources drop to zero..."
-            $ hubmenu = True
-            jump choice_done
-
-        "Style 2":
-            hide character
-            hide character2
-            $ avatar *=10
-            $ world = 0
-            scene auroraborealis
-            with irisout
-            "A little advice before you start, be careful not to let your resources drop to zero..."
-            $ hubmenu = True
-            jump choice_done
 
 label world_choice:
     scene path

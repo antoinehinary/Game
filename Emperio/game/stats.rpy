@@ -187,23 +187,6 @@ screen StatsUI:
 
 ################################################## theory
 
-image perso animated:
-
-    "attack_extra0.png"
-    pause 1.0
-    "attack_extra1.png"
-    pause 0.15
-    "attack_extra2.png"
-    pause 0.15
-    "attack_extra3.png"
-    pause 0.15
-    "attack_extra4.png"
-    pause 0.15
-    "attack_extra5.png"
-    pause 0.15
-    "attack_extra6.png"
-    repeat
-
 screen theory:
 
     imagebutton:
@@ -268,13 +251,13 @@ screen Statcredit:
         align (0.5, 0.4)
         
         side "c r":
-            area (0, 0, 1000, 850)
+            area (0, 0, 1000, 900)
 
             viewport id "vp":
                 draggable True
 
                 vbox:
-                    text "{b}Credits{/b} : \n\n{b}Backgrounds{/b} : \nhttps://maxmeents.itch.io/228-free-medieval-town-backgrounds \n& \nhttps://lornn.itch.io/fantasy-ice-and-snow-backgrounds \n\n{b}Tips/credit button{/b} : \nhttps://zeillearnings.itch.io/stats-ui \n\n{b}Characters{/b} : \nhttps://pochipochihouse.itch.io/ \n\n{b}Stat bar{/b} : \nhttps://gamedeveloperstudio.itch.io/meters-and-levels \n\n{b}Game made by{/b} : Tristan Broccard, Anthony Dawoud, Antoine Hinary & Camille Challier" size 35 
+                    text "{b}Credits{/b} : \n\n{b}Backgrounds{/b} : \nhttps://maxmeents.itch.io/228-free-medieval-town-backgrounds \n& \nhttps://lornn.itch.io/fantasy-ice-and-snow-backgrounds \n\n{b}Tips/credit button{/b} : \nhttps://zeillearnings.itch.io/stats-ui \n\n{b}Characters{/b} : \nhttps://craftpix.net/freebies/assassin-mage-viking-free-pixel-art-game-heroes/?amp;utm_medium=myself&amp;utm_campaign=sprite \n\n{b}Stat bar{/b} : \nhttps://gamedeveloperstudio.itch.io/meters-and-levels \n\n{b}Game made by{/b} : Tristan Broccard, Anthony Dawoud, Antoine Hinary & Camille Challier" size 35 
             vbar value YScrollValue("vp")
 
 

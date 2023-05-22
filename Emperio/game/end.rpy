@@ -1,4 +1,13 @@
 label dead:
+    
+    if avatar ==1:
+        show sprite_death with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_death2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
     "You lose"
     "The Game ended you have:"
     "Money: [money]{p}Power: [power]{p}Happiness: [happiness]{p}Population: [population]"
@@ -10,7 +19,11 @@ label dead:
         if happiness <= 0:
             "You were not carefull with your happiness. \nYou can try the {a=https://findahelpline.com/ch}Helpline{\a} \n Tips : Invest in what is useful so you don't run out of money during key moments!"
         if population <= 0:
-            "You were not carefull with your population. \nTips : Invest in your village to attract people and expend your population !"
+            "You were not carefull with your population. \nTips : Invest in your village to attract people and expend your population !"   
+    if avatar ==1 :
+        hide sprite_death with leftside
+    if avatar == 2 :
+        hide sprite_death2 with leftside
     jump end
             
 label ending:

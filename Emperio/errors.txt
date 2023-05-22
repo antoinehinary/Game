@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/stats.rpy", line 209: u'show' is not a keyword argument or valid child for the screen statement.
-    show perso animated :
-        ^
+File "game/scenario.rpy", line 366: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    if avatar ==1:
+    ^
+
+File "game/scenario.rpy", line 376: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    if avatar ==1 :
+    ^
+
+File "game/scenario.rpy", line 684: Line is indented, but the preceding ATL statement does not expect a block. Please check this line's indentation.
+    xalign 0.95 yalign 0.6
+    ^
 
 Ren'Py Version: Ren'Py 7.5.3.22090809
-Tue May 16 15:01:36 2023
+Thu May 18 16:49:27 2023

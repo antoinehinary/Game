@@ -82,23 +82,40 @@ label choice1_1:
     $ a = renpy.random.choice([0,1])
     $ menu_flag = True
     if a==0 :
-        show character with leftside  :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+    
+        if avatar ==1:
+            show sprite_happy with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_happy2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "The traders bring novelty to the village ! \nGain : money {image=arrow_up.png} 10, population {image=arrow_up.png} 10, happiness {image=arrow_up.png} 10"
         $ money +=10
         $ population +=10
         $ happiness +=10
-        hide character with leftside
+        if avatar ==1 :
+            hide sprite_happy with leftside
+        if avatar == 2 :
+            hide sprite_happy2 with leftside
         jump conditions
 
     elif a==1 :
-        show character_sad with leftside  :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_hurt with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_hurt2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "The traders were suspicious...  \nGain : happiness {image=arrow_down.png} 5"
         $ happiness -= 5
-        hide character_sad with leftside
+        if avatar ==1 :
+            hide sprite_hurt with leftside
+        if avatar == 2 :
+            hide sprite_hurt with leftside
         jump conditions
 
 label choice1_2:
@@ -184,20 +201,33 @@ label choice3_1:
     $ menu_flag = True
 
     if power>=a :
-        show character_fight with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_attack with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_attack2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "We succeeded in repelling the enemies ! We were able to seize their resources but we lost many fighters and the morale of the village is at its lowest. \n Gain : happiness {image=arrow_down.png} 10, money {image=arrow_up.png} 20, population {image=arrow_down.png} 10, power {image=arrow_up.png} 20"
         $ happiness -=10
         $ money +=20
         $ population -=10
         $ power +=20
-        hide character_fight with leftside
+        if avatar ==1 :
+            hide sprite_attack with leftside
+        if avatar == 2 :
+            hide sprite_attack2 with leftside
 
     elif power< a :
-        show character_sad with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_hurt with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_hurt2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "The enemies were stronger than us, the village was almost destroyed… \nGain : happiness {image=arrow_down.png} /2, money {image=arrow_down.png} /2, population {image=arrow_down.png} 10, power {image=arrow_down.png} 10"
         $ happiness = int(happiness /2)
         if money<0 :
@@ -206,32 +236,51 @@ label choice3_1:
             $ money = int (money /2)
         $ population -=10
         $ power =-10
-        hide character_sad with leftside
+        if avatar ==1 :
+            hide sprite_hurt with leftside
+        if avatar == 2 :
+            hide sprite_hurt2 with leftside
 
     jump conditions
 
 label choice3_2:
     $ menu_flag = True
     if money + power > 60 :
-        show character with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_happy with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_happy2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "An agreement has been reached with the neighboring village. We lost some resources but gained a great ally.\nGain : money {image=arrow_down.png} 10, power {image=arrow_up.png} 40, population {image=arrow_up.png} 10"
         $ money -=10
         $ power +=40
         $ population += 10
-        hide character with leftside
+        if avatar ==1 :
+            hide sprite_happy with leftside
+        if avatar == 2 :
+            hide sprite_happy2 with leftside
 
     elif  money + power <= 60 :
-        show character_sad with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_hurt with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_hurt2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "An agreement hasn’t been reached, we are paying a heavy tol, \nGain : money {image=arrow_down.png} /5"
         if money<0 :
             $ money -=5
         else :
             $ money = int (money /5)
-        hide character_sad with leftside
+        if avatar ==1 :
+            hide sprite_hurt with leftside
+        if avatar == 2 :
+            hide sprite_hurt2 with leftside
 
     jump conditions
 
@@ -271,19 +320,32 @@ label scenario4:
 label choice4_1:
     $ menu_flag = True
     if power>=p :
-        show character_fight with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_hurt with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_hurt2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "We succeeded in repelling the enemies ! We lost some fighters but gained a new ally !\nGain : money {image=arrow_up.png} 10, population {image=arrow_down.png} 10, power {image=arrow_up.png} 30"
         $ money += 10
         $ population -=10
         $ power +=30
-        hide character_fight with leftside
+        if avatar ==1 :
+            hide sprite_hurt with leftside
+        if avatar == 2 :
+            hide sprite_hurt2 with leftside
 
     elif power< p :
-        show character_sad with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_hurt with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_hurt2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "The enemies were stronger than us, the village was almost destroyed… \nGain : happiness {image=arrow_down.png}, money {image=arrow_down.png}, population {image=arrow_down.png} 10, power {image=arrow_down.png}"
         $ happiness = int(happiness/3)
         if money<0 :
@@ -292,18 +354,29 @@ label choice4_1:
             $ money = int (money /3)
         $ population -=10
         $ power = int(power/3)
-        hide character_sad with leftside
+        if avatar ==1 :
+            hide sprite_hurt with leftside
+        if avatar == 2 :
+            hide sprite_hurt2 with leftside
 
     jump conditions
 
 label choice4_2:
     $ menu_flag = True
-    show character_sad with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+    if avatar ==1:
+        show sprite_hurt with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_hurt2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
     "You have lost the trust of the people.... \nGain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
-    hide character_sad with leftside
+    if avatar ==1 :
+        hide sprite_hurt with leftside
+    if avatar == 2 :
+        hide sprite_hurt with leftside
     jump conditions
 
 ###################################################### Event5
@@ -328,24 +401,40 @@ label choice5_1:
     $ a = renpy.random.choice([0,1])
     $ menu_flag = True
     if a==0 :
-        show character with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_happy with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_happy2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "Good choice! You are strengthening your village. \nGain : happiness {image=arrow_up.png} 10, money {image=arrow_down.png} 10, population {image=arrow_up.png} 10, power {image=arrow_up.png} 20"
         $ money -=10
         $ population +=10
         $ happiness +=10
         $ power +=20
-        hide character with leftside
+        if avatar ==1 :
+            hide sprite_happy with leftside
+        if avatar == 2 :
+            hide sprite_happy2 with leftside
 
     elif a==1 :
-        show character_sad with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+        if avatar ==1:
+            show sprite_hurt with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
+        if avatar == 2 :
+            show sprite_hurt2 with leftside :
+                xzoom 4  yzoom 4
+                xalign 0.95 yalign 0.6
         "The traders were suspicious... \nGain : happiness {image=arrow_down.png} 10, money {image=arrow_down.png} 10"
         $ happiness -= 10
         $ money -= 10
-        hide character_sad with leftside
+        if avatar ==1 :
+            hide sprite_hurt with leftside
+        if avatar == 2 :
+            hide sprite_hurt2 with leftside
 
     jump conditions
 
@@ -357,9 +446,14 @@ label choice5_2:
 ###################################################### Events Positifs
 label scenario6:
     $ counter += 1
-    show character with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+    if avatar ==1:
+        show sprite_happy with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_happy2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
 
     if (world == 0 ):
         $ situation = "The fishing of the day has been good! You are earning a lot of resources!"
@@ -371,7 +465,10 @@ label scenario6:
         "Gain : happiness {image=arrow_up.png} 20, money {image=arrow_up.png} 20"
     $ happiness += 20
     $ money += 20
-    hide character with leftside
+    if avatar ==1 :
+        hide sprite_happy with leftside
+    if avatar == 2 :
+        hide sprite_happy2 with leftside
     hide screen s
     jump conditions
 
@@ -577,26 +674,42 @@ label scenario11:
 
 label choice11_1:
     $ menu_flag = True
-    show character with leftside  :
-        xzoom 0.3 yzoom 0.3
-        xalign 1.0 yalign 1.0
+    if avatar ==1:
+        show sprite_happy with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_happy2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
     $ counter11 = counter
     $ actif11 = True
     "The workshop was a great success ! \nGain : happiness {image=arrow_up.png} 10, money {image=arrow_up.png} 20, population {image=arrow_up.png} 10"
     $ money +=20
     $ happiness +=10
     $ population +=10
-    hide character with leftside
+    if avatar ==1 :
+        hide sprite_happy with leftside
+    if avatar == 2 :
+        hide sprite_happy2 with leftside
     jump conditions
 
 label choice11_2:
     $ menu_flag = True
-    show character_sad with leftside  :
-        xzoom 0.3 yzoom 0.3
-        xalign 1.0 yalign 1.0
+    if avatar ==1:
+        show sprite_hurt with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_hurt2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
     "You lost a good opportunity and the people are not satisfied \nGain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
-    hide character with leftside
+    if avatar ==1 :
+        hide sprite_hurt with leftside
+    if avatar == 2 :
+        hide sprite_hurt2 with leftside
     jump conditions
 
 
@@ -881,12 +994,20 @@ label choice18_1:
 
 label choice18_2:
     $ menu_flag = True
-    show character_sad with leftside :
-            xzoom 0.3 yzoom 0.3
-            xalign 1.0 yalign 1.0
+    if avatar ==1:
+        show sprite_hurt with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_hurt2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
     "The villagers become frustrated with the lack of progress and innovation. \nGain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
-    hide character_sad with leftside
+    if avatar ==1 :
+        hide sprite_hurt with leftside
+    if avatar == 2 :
+        hide sprite_hurt2 with leftside
     jump conditions
 
 ###################################################### Event19
@@ -1021,23 +1142,36 @@ label choice20_3:
 
 ###################################################### Events negatifs
 label scenario21:
-    show character_sad with leftside :
-        xzoom 0.3 yzoom 0.3
-        xalign 1.0 yalign 1.0
+    if avatar ==1:
+        show sprite_hurt with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_hurt2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
     $ situation = "A disease outbreak is spreading in the village causing some villagers to become ill."
     show screen s
     $ happiness -= 5
     $ money -= 5
     $ population -= 10
     "Gain : happiness {image=arrow_down.png} 5, money {image=arrow_down.png} 5, population {image=arrow_down.png} 10"
-    hide character_sad with leftside
+    if avatar ==1 :
+        hide sprite_hurt with leftside
+    if avatar == 2 :
+        hide sprite_hurt2 with leftside
     hide screen s
     jump conditions
 
 label scenario22:
-    show character_sad with leftside :
-        xzoom 0.3 yzoom 0.3
-        xalign 1.0 yalign 1.0
+    if avatar ==1:
+        show sprite_hurt with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
+    if avatar == 2 :
+        show sprite_hurt2 with leftside :
+            xzoom 4  yzoom 4
+            xalign 0.95 yalign 0.6
     if world == 0 :
         $ situation = " A severe cold snap has hit the region, causing crops to fail and leaving the village without food."
         show screen s
@@ -1048,7 +1182,10 @@ label scenario22:
     $ happiness -= 5
     $ money -= 10
     $ population -= 5
-    hide character_sad with leftside
+    if avatar ==1 :
+        hide sprite_hurt with leftside
+    if avatar == 2 :
+        hide sprite_hurt2 with leftside
     hide screen s
     jump conditions
 
@@ -1135,46 +1272,86 @@ label conditions:
 
     if actif8== True :
         if (counter )== (counter8+1) :
-            show character with leftside  :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Scientific research has brought in money! \nGain : money {image=arrow_up.png} 10"
             $ money += 10  
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
 
         if (counter) == (counter8+2):
-            show character with leftside  :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Scientific research has brought in money! \nGain : money {image=arrow_up.png} 20, happiness {image=arrow_up.png} 10"
             $ money += 20
             $ happiness += 10 
             $ actif8 = False
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
 
     if actif9== True :
         if (counter)== (counter9 +1) :
-            show character with leftside  :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Our investment in research is paying off! \nGain : money {image=arrow_up.png} 10"
             $ money += 10 
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
         if (counter) == (counter9 +2):
-            show character with leftside :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Our investment in research is paying off! \nGain : money {image=arrow_up.png} 20"
             $ money += 20
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
         if (counter) == (counter9 +3):
-            show character with leftside :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Our investment in research is paying off! \nGain : money {image=arrow_up.png} 20"
             $ money += 20
             $ actif9 = False
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
 
     if actif10== True :
         if (counter)== (counter10 +1) :
@@ -1182,26 +1359,42 @@ label conditions:
             $ power += 10 
             $ population += 10
         if (counter) == (counter10 +3):
-            show character with leftside :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Investing in the development of our own trade network has resulted in significant profits and made our village a major player in the regional trade network. \n Gain : money {image=arrow_up.png} 20"
             $ money += 20
             $ actif10 = False
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
 
     if actif11== True :
         if (counter )== (counter11+1) :
             "After allowing the craftsmen to set up shop, the village's production capabilities have greatly increased ! \n Gain : money {image=arrow_up.png} 10 "
             $ money += 10 
         if (counter) == (counter11 +2):
-            show character with leftside :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "After allowing the craftsmen to set up shop, the village's production capabilities have greatly increased ! \n Gain : happiness {image=arrow_up.png} 10 "
             $ happiness += 10
             $ actif11 = False
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
   
     if actif12== True :
         if (counter )== (counter12+1) :
@@ -1213,14 +1406,22 @@ label conditions:
             $ population += 10
             $ money -= 10 
         if (counter) == (counter12 +3):
-            show character with leftside :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "The population is expending... \nGain : money {image=arrow_down.png} 10, population {image=arrow_up.png} 10"
             $ population += 10
             $ money -= 10 
             $ actif12 = False
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
 
     if actif14== True :
         if (counter )== (counter14 +1) :
@@ -1230,13 +1431,21 @@ label conditions:
             $ population += 10
             $ money += 10
         if (counter) == (counter14 +3):
-            show character with leftside:
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Your investment in schools is paying off! \nGain : money {image=arrow_up.png} 10"
             $ money += 10
             $ actif14 = False
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
 
     if actif15== True :
         if counter == (counter15 + 1) and (positif15 == True):
@@ -1245,13 +1454,21 @@ label conditions:
             $ happiness += 10
             $ population += 10
         if counter == (counter15 + 1) and (negatif15 == True):
-            show character_sad with leftside  :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_hurt with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_hurt2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Your bad relationship with the neighboring village is weakening you... \nGain : power {image=arrow_down.png} 10, happiness {image=arrow_down.png} 10"
             $ power -= 10
             $ happiness -= 10
-            hide character_sad with leftside
+            if avatar ==1 :
+                hide sprite_hurt with leftside
+            if avatar == 2 :
+                hide sprite_hurt2 with leftside
         $ actif15 = False
 
     if actif16== True :
@@ -1265,14 +1482,22 @@ label conditions:
             $ power -= 10
             $ happiness -= 10
         if counter > (counter16 + 2) and (negatif16 == True):
-            show character_sad with leftside  :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_hurt with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_hurt2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Ignoring the problem of the village's deteriorating infrastructure risk safety and efficiency... You should have kept some money for essential needs. \nGain : power {image=arrow_down.png} 20, happiness {image=arrow_down.png} 20"
             $ power -= 20
             $ happiness -= 20
             $ actif16 = False
-            hide character_sad with leftside
+            if avatar ==1 :
+                hide sprite_hurt with leftside
+            if avatar == 2 :
+                hide sprite_hurt2 with leftside
 
     if actif17== True :
         if counter == (counter17+1):
@@ -1297,14 +1522,22 @@ label conditions:
             $ population += 10
             $ actif19 = False
         if counter == (counter19 + 2) and (negatif19 == True):
-            show character_sad with leftside  :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_hurt with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_hurt2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "The village falls behind other communities in terms of progress and development, and the villagers become frustrated with the lack of education opportunities. The younger generation may seek to leave the village for better education opportunities elsewhere, leading to a brain drain and further hindering the development of the village.\nGain : population {image=arrow_down.png} 10, happiness {image=arrow_down.png} 10"
             $ happiness -= 10
             $ population -= 10
             $ actif19 = False
-            hide character_sad with leftside
+            if avatar ==1 :
+                hide sprite_hurt with leftside
+            if avatar == 2 :
+                hide sprite_hurt2 with leftside
 
     if actif20== True : 
         if counter == (counter20 + 2) and (choice20_1 == True):
@@ -1326,11 +1559,19 @@ label conditions:
 
     if actif24== True :
         if (counter )== (counter24+1) :
-            show character with leftside  :
-                xzoom 0.3 yzoom 0.3
-                xalign 1.0 yalign 1.0
+            if avatar ==1:
+                show sprite_happy with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
+            if avatar == 2 :
+                show sprite_happy2 with leftside :
+                    xzoom 4  yzoom 4
+                    xalign 0.95 yalign 0.6
             "Trade has brought in money! \nGain : money {image=arrow_up.png} 10"
             $ money += 10  
-            hide character with leftside
+            if avatar ==1 :
+                hide sprite_happy with leftside
+            if avatar == 2 :
+                hide sprite_happy2 with leftside
 
     jump choice_done
