@@ -103,8 +103,6 @@ label choice1_1:
         jump conditions
 
     elif a==1 :
-        image sad animated = Movie(play="animation_sad.webm", loop=False)
-        show sad animated at truecenter
         if avatar ==1:
             show sprite_hurt with leftside :
                 xzoom 4  yzoom 4
@@ -152,8 +150,6 @@ label scenario2:
 
 label choice2_1:
     $ menu_flag = True
-    image happy animated = Movie(play="animation_happy.webm", loop=False)
-    show happy animated at truecenter
     "You have been able to take care of our village and this leads to an increase in morale and trust of the village in the long term. \nGain : happiness {image=arrow_up.png} 20, money {image=arrow_down.png} 20"
     $ happiness +=20
     $ money -=20
@@ -161,8 +157,6 @@ label choice2_1:
 
 label choice2_2:
     $ menu_flag = False
-    image sad animated = Movie(play="animation_sad.webm", loop=False)
-    show sad animated at truecenter
     "The village resents you for keeping these resources, and you lost a few people.  \nGain : happiness {image=arrow_down.png} 10, money {image=arrow_down.png} 5, population {image=arrow_down.png} 10"
     $ money -= 5
     $ happiness -= 10
@@ -216,8 +210,6 @@ label choice3_1:
             show sprite_attack2 with leftside :
                 xzoom 4  yzoom 4
                 xalign 0.95 yalign 0.6
-        image money animated = Movie(play="animation_gein_money.webm", loop=False)
-        show money animated at truecenter
         "We succeeded in repelling the enemies ! We were able to seize their resources but we lost many fighters and the morale of the village is at its lowest. \n Gain : happiness {image=arrow_down.png} 10, money {image=arrow_up.png} 20, population {image=arrow_down.png} 10, power {image=arrow_up.png} 20"
         $ happiness -=10
         $ money +=20
@@ -237,8 +229,6 @@ label choice3_1:
             show sprite_hurt2 with leftside :
                 xzoom 4  yzoom 4
                 xalign 0.95 yalign 0.6
-        image death animated = Movie(play="animation_death.webm", loop=False)
-        show death animated at truecenter
         "The enemies were stronger than us, the village was almost destroyed… \nGain : happiness {image=arrow_down.png} /2, money {image=arrow_down.png} /2, population {image=arrow_down.png} 10, power {image=arrow_down.png} 10"
         $ happiness = int(happiness /2)
         if money<0 :
@@ -285,8 +275,6 @@ label choice3_2:
             show sprite_hurt2 with leftside :
                 xzoom 4  yzoom 4
                 xalign 0.95 yalign 0.6
-        image pay animated = Movie(play="animation_pay.webm", loop=False)
-        show pay animated at truecenter
         "An agreement hasn’t been reached, we are paying a heavy tol, \nGain : money {image=arrow_down.png} /5"
         if money<0 :
             $ money -=5
@@ -343,8 +331,6 @@ label choice4_1:
             show sprite_hurt2 with leftside :
                 xzoom 4  yzoom 4
                 xalign 0.95 yalign 0.6
-        image deal animated = Movie(play="animation_deal.webm", loop=False)
-        show deal animated at truecenter
         "We succeeded in repelling the enemies ! We lost some fighters but gained a new ally !\nGain : money {image=arrow_up.png} 10, population {image=arrow_down.png} 10, power {image=arrow_up.png} 30"
         $ money += 10
         $ population -=10
@@ -390,8 +376,6 @@ label choice4_2:
         show sprite_hurt2 with leftside :
             xzoom 4  yzoom 4
             xalign 0.95 yalign 0.6
-    image sad animated = Movie(play="animation_sad.webm", loop=False)
-    show sad animated at truecenter
     "You have lost the trust of the people.... \nGain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
     if avatar ==1 :
@@ -430,8 +414,6 @@ label choice5_1:
             show sprite_happy2 with leftside :
                 xzoom 4  yzoom 4
                 xalign 0.95 yalign 0.6
-        image power animated = Movie(play="animation_power.webm", loop=False)
-        show power animated at truecenter
         "Good choice! You are strengthening your village. \nGain : happiness {image=arrow_up.png} 10, money {image=arrow_down.png} 10, population {image=arrow_up.png} 10, power {image=arrow_up.png} 20"
         $ money -=10
         $ population +=10
@@ -451,8 +433,6 @@ label choice5_1:
             show sprite_hurt2 with leftside :
                 xzoom 4  yzoom 4
                 xalign 0.95 yalign 0.6
-        image fire animated = Movie(play="animation_fire.webm", loop=False)
-        show fire animated at truecenter
         "The traders were suspicious... \nGain : happiness {image=arrow_down.png} 10, money {image=arrow_down.png} 10"
         $ happiness -= 10
         $ money -= 10
@@ -616,8 +596,6 @@ label choice9_1:
         $ money -=20
 
     else:
-        image pay animated = Movie(play="animation_pay.webm", loop=False)
-        show pay animated at truecenter
         "The research came back without a result \nGain : money {image=arrow_down.png} 10"
         $ money -=10
 
@@ -662,15 +640,11 @@ label choice10_1:
     if 60 >= p :
         $ counter10 = counter
         $ actif10 = True
-        image network animated = Movie(play="animation_network.webm", loop=False)
-        show network animated at truecenter
         "The network is successfully built ! \nGain : money {image=arrow_down.png} 20,  happiness {image=arrow_up.png} 10"
         $ money -=20
         $ happiness +=10
 
     else:
-        image pay animated = Movie(play="animation_pay.webm", loop=False)
-        show pay animated at truecenter
         "You failed to create the network on your own. \nGain : money {image=arrow_down.png} 10"
         $ money -=10
 
@@ -678,8 +652,6 @@ label choice10_1:
 
 label choice10_2:
     $ menu_flag = True
-    image sad animated = Movie(play="animation_sad.webm", loop=False)
-    show sad animated at truecenter
     "You have lost an ally"
     $ power -=10
     jump conditions
@@ -723,7 +695,7 @@ label choice11_1:
             xalign 0.95 yalign 0.6
     $ counter11 = counter
     $ actif11 = True
-    image money animated = Movie(play="animation_gein_money.webm", loop=False)
+    image money animated = Movie(play="animation_gain_money.webm", loop=False)
     show money animated at truecenter
     "The workshop was a great success ! \nGain : happiness {image=arrow_up.png} 10, money {image=arrow_up.png} 20, population {image=arrow_up.png} 10"
     $ money +=20
@@ -745,8 +717,6 @@ label choice11_2:
         show sprite_hurt2 with leftside :
             xzoom 4  yzoom 4
             xalign 0.95 yalign 0.6
-    image angry animated = Movie(play="animation_angry.webm", loop=False)
-    show angry animated at truecenter
     "You lost a good opportunity and the people are not satisfied \nGain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
     if avatar ==1 :
@@ -785,8 +755,6 @@ label scenario12:
 
 label choice12_1:
     $ menu_flag = True
-    image death animated = Movie(play="animation_death.webm", loop=False)
-    show death animated at truecenter
     "The population growth was reduced but the people are not happy with your decision. \nGain : happiness {image=arrow_down.png} 20, money {image=arrow_up.png} 10"
     $ money +=10
     $ happiness -=20
@@ -861,8 +829,6 @@ label choice14_1:
     $ menu_flag = True
     $ counter14 = counter
     $ actif14 = True
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     "You have upgraded your educational system and thus securing a future for the new generation.  \nGain : power {image=arrow_up.png} 10, happiness {image=arrow_up.png} 10, money {image=arrow_down.png} 10"
     $ money -=10
     $ power +=10
@@ -951,8 +917,6 @@ label scenario16:
             jump choice16_2
 
 label choice16_1:
-    image payment animated = Movie(play="animation_pay2.webm", loop=False)
-    show payment animated at truecenter
     "You invest in the infrastructure. \nGain : money {image=arrow_down.png} 20"
     $ money -= 20
     #Rep: - money (now) + power (+ 1 tour) + happiness (+ 1 tour)
@@ -961,8 +925,6 @@ label choice16_1:
 
 label choice16_2:
     $ population -= 10
-    image death animated = Movie(play="animation_death.webm", loop=False)
-    show death animated at truecenter
     "You lost some people... \nGain : population {image=arrow_down.png} 10"
     #Rep: -power (- 1 tour - - 2 tour) - happiness (- 1 tour - - 2 tour)
     $ negatif16 = True
@@ -1001,8 +963,6 @@ label scenario17:
 
 label choice17_1:
     $ money -= 20
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     "You made an investisement! \nGain : money {image=arrow_down.png} 20"
     if p < 95 :
         $ counter17 = counter
@@ -1047,8 +1007,6 @@ label choice18_1:
     $ actif18 = True
     # Rep: ++happiness ++power (2 tours)
     $ menu_flag = True
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     "Gain : money {image=arrow_down.png} :20"
     $ money -=20
     jump conditions
@@ -1063,8 +1021,6 @@ label choice18_2:
         show sprite_hurt2 with leftside :
             xzoom 4  yzoom 4
             xalign 0.95 yalign 0.6
-    image angry animated = Movie(play="animation_angry.webm", loop=False)
-    show angry animated at truecenter
     "The villagers become frustrated with the lack of progress and innovation. \nGain : happiness {image=arrow_down.png} 10"
     $ happiness -=10
     if avatar ==1 :
@@ -1109,8 +1065,6 @@ label choice19_1:
     $ positif19= True
     # Rep: ++happiness, ++power, + argent (3 tours)
     $ menu_flag = True
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     "Gain : money {image=arrow_down.png} :20"
     $ money -=20
     jump conditions
@@ -1119,8 +1073,6 @@ label choice19_2:
     $ negatif19 = True
     # Rep : -happiness, -population (3tours)
     $ menu_flag = True
-    image sad animated = Movie(play="animation_sad.webm", loop=False)
-    show sad animated at truecenter
     "Gain : happiness {image=arrow_down.png} 10, population {image=arrow_down.png} 10"
     $ happiness -=10
     $ population -=10
@@ -1187,8 +1139,6 @@ label choice20_1:
     $ choice20_1 = True
     # Rep : +++happiness, +++power (2tours)
     $ menu_flag = True
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     " Gain : money {image=arrow_down.png} 30"
     $ money -=30
     jump conditions
@@ -1196,8 +1146,6 @@ label choice20_1:
 label choice20_2:
     $ choice20_2 = True
     # Rep : ++happiness, ++power (2tours)
-    image payment animated = Movie(play="animation_pay2.webm", loop=False)
-    show payment animated at truecenter
     "Gain : money {image=arrow_down.png} 20"
     $ money -=20
     jump conditions
@@ -1206,8 +1154,6 @@ label choice20_3:
     $ hoice20_3 = True
     # Rep : -happiness, +power (2tours)
     $ menu_flag = True
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     "Gain : money {image=arrow_down.png} 10"
     $ money -=10
     jump conditions
@@ -1253,8 +1199,6 @@ label scenario22:
     elif world == 1 :
         $ situation = " A severe drought has hit the region, causing crops to fail and leaving the village without food."
         show screen s
-    image death animated = Movie(play="animation_death.webm", loop=False)
-    show death animated at truecenter
     "Gain : happiness {image=arrow_down.png} 5, money {image=arrow_down.png} 10, population {image=arrow_down.png} 5"
     $ happiness -= 5
     $ money -= 10
@@ -1332,8 +1276,6 @@ label choice24_1:
     $ menu_flag = True
     $ counter24 = counter
     $ actif24 = True
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     "The village's trage route is safe now ! \nGain : happiness {image=arrow_up.png} 10, money {image=arrow_down.png} 5"
     $ money -=5
     $ happiness +=10
@@ -1341,8 +1283,6 @@ label choice24_1:
 
 label choice24_2:
     $ menu_flag = True
-    image pay animated = Movie(play="animation_pay.webm", loop=False)
-    show pay animated at truecenter
     "Your economy has dropped dramatically... \nGain : happiness {image=arrow_down.png} 5, money {image=arrow_down.png} 20"
     $ money -= 20
     $ happiness +-5

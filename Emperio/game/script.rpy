@@ -78,6 +78,8 @@ label start:
 
 label game:
     scene path
+    $ tune = renpy.random.choice( ("audio/musiquejeu1.mp3", "audio/musiquejeu2.mp3", "audio/musiquejeu2.mp3") )
+    $ renpy.music.play (tune, channel="music", if_changed=True)
     jump presentation
 
 

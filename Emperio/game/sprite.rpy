@@ -225,6 +225,14 @@ label character_choice:
     scene auroraborealis
     with irisout
     "A little advice before you start, be careful not to let your resources drop to zero..."
+    show perso animated :
+        xzoom 2  yzoom 2
+        xalign 0.1 yalign 1.0
+    $ theory_text = "Hey ! I'm here to help you make the best decisions ! Good luck :)"
+    show screen theory
+    "If you're unsure of a decision, you can always listen to your wise Maester by clicking on it !"
     $ hubmenu = True
+    hide screen theory
+    hide perso animated
     jump choice_done
 

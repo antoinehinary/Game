@@ -1,4 +1,6 @@
 label dead:
+    image death animated = Movie(play="animation_death.webm", loop=False)
+    show death animated at truecenter
     
     if avatar ==1:
         show sprite_death with leftside :
@@ -17,7 +19,8 @@ label dead:
         if power <= 0:
             "You were not carefull with your power. \nTips : Look carefully at your village's power before fighting ! "
         if happiness <= 0:
-            "You were not carefull with your happiness. \nYou can try the {a=https://findahelpline.com/ch}Helpline{\a} \n Tips : Invest in what is useful so you don't run out of money during key moments!"
+            "You were not carefull with your happiness. \nYou can try the {a=https://findahelpline.com/ch}Helpline{\a}"
+            "\n Tips : Invest in what is useful so you don't run out of money during key moments!"
         if population <= 0:
             "You were not carefull with your population. \nTips : Invest in your village to attract people and expend your population !"   
     if avatar ==1 :
