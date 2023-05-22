@@ -82,8 +82,6 @@ label choice1_1:
     $ a = renpy.random.choice([0,1])
     $ menu_flag = True
     if a==0 :
-        image money animated = Movie(play="animation_gain_money.webm", loop=False)
-        show money animated at truecenter
         if avatar ==1:
             show sprite_happy with leftside :
                 xzoom 4  yzoom 4
@@ -92,6 +90,8 @@ label choice1_1:
             show sprite_happy2 with leftside :
                 xzoom 4  yzoom 4
                 xalign 0.95 yalign 0.6
+        image money animated = Movie(play="animation_gain_money.webm", loop=False)
+        show money animated at truecenter
         "The traders bring novelty to the village ! \nGain : money {image=arrow_up.png} 10, population {image=arrow_up.png} 10, happiness {image=arrow_up.png} 10"
         $ money +=10
         $ population +=10
@@ -103,8 +103,8 @@ label choice1_1:
         jump conditions
 
     elif a==1 :
-        image fire animated = Movie(play="animation_fire.webm", loop=False)
-        show fire animated at truecenter
+        image sad animated = Movie(play="animation_sad.webm", loop=False)
+        show sad animated at truecenter
         if avatar ==1:
             show sprite_hurt with leftside :
                 xzoom 4  yzoom 4
@@ -512,9 +512,9 @@ label scenario7:
 
 label choice7_1:
     $ menu_flag = True
-    "Gain : happiness {image=arrow_down.png} 5, power {image=arrow_up.png} 30"
     image deal animated = Movie(play="animation_deal.webm", loop=False)
     show deal animated at truecenter
+    "Gain : happiness {image=arrow_down.png} 5, power {image=arrow_up.png} 30"
     $ happiness -=5
     $ power += 30
     jump conditions
@@ -610,8 +610,8 @@ label choice9_1:
     if 80 >= p :
         $ counter9 = counter
         $ actif9 = True
-        image discovery animated = Movie(play="animation_discovery.webm", loop=False)
-        show discovery animated at truecenter
+        image invention animated = Movie(play="animation_invention.webm", loop=False)
+        show invention animated at truecenter
         "The technology takes time to prosper... \nGain : money {image=arrow_down.png} 20"
         $ money -=20
 
@@ -1223,9 +1223,9 @@ label scenario21:
         show sprite_hurt2 with leftside :
             xzoom 4  yzoom 4
             xalign 0.95 yalign 0.6
-    $ situation = "A disease outbreak is spreading in the village causing some villagers to become ill."
     image virus animated = Movie(play="animation_virus.webm", loop=False)
     show virus animated at truecenter
+    $ situation = "A disease outbreak is spreading in the village causing some villagers to become ill."
     show screen s
     $ happiness -= 5
     $ money -= 5
