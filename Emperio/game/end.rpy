@@ -1,4 +1,6 @@
 label dead:
+
+    
     image death animated = Movie(play="animation_death.webm", loop=False)
     show death animated at truecenter
     

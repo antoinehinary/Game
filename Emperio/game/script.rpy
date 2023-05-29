@@ -68,10 +68,12 @@ label start:
     $ list_totale.append(scenario_money[0])
     $ list_totale.append(scenario_chill[1])
     $ list_totale.append(scenario_neg[1])
-    $ list_totale.append(scenario_big_invest[2])
+    $ list_totale.append(scenario_big_invest[1])
     $ list_totale.append(scenario_war[1])
     $ list_totale.append(scenario_hard_invest[0])
     $ list_totale.append(scenario_random_invest[1])
+
+    $list_totale =["scenario8","scenario17","scenario10", "scenario7", "scenario22","scenario16","scenario3",]
 
     $ loop = 0
     $ counter = 0

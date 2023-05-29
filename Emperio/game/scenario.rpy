@@ -291,11 +291,6 @@ label choice3_2:
 label scenario4:
     $ tips = "{b}Tips{/b} : Look carefully at your village's power before fighting ! "
     show screen gameUI
-    $ theory_text = "{b}Theory{/b} : If an economy is said to be open, i.e. if it trades with its neighbours, it will benefit from strong economic spin-offs in times of peace. Goods can be exchanged in an advantageous way between the different countries. However, if one of the two economies suffers a shock, the other will also feel the negative impact."
-    show screen theory
-    show perso animated :
-        xzoom 2  yzoom 2
-        xalign 0.1 yalign 1.0
     $ counter += 1
     $ counter4 = counter
     $ p = renpy.random.randint(10,100)
@@ -310,14 +305,10 @@ label scenario4:
         "Offer aid and potentially gain allies":
             hide screen s
             hide screen gameUI
-            hide screen theory
-            hide perso animated
             jump choice4_1
-        "Ignore":
+        "Neglect":
             hide screen s
             hide screen gameUI
-            hide screen theory
-            hide perso animated
             jump choice4_2
 
 label choice4_1:
@@ -539,8 +530,8 @@ label choice8_1:
     $ menu_flag = True
     $ counter8 = counter
     $ actif8 = True
-    image invention animated = Movie(play="animation_invention.webm", loop=False)
-    show invention animated at truecenter
+    #image invention animated = Movie(play="animation_invention.webm", loop=False)
+    #show invention animated at truecenter
     "He was able to create technological advancement but he needed a lot of ressources. \nGain : money {image=arrow_down.png} 10,  happiness {image=arrow_up.png} 10"
     $ money -=10
     $ happiness +=10
@@ -652,8 +643,8 @@ label choice10_1:
 
 label choice10_2:
     $ menu_flag = True
-    "You have lost an ally"
-    $ power -=10
+    "You have lost an ally \nGain : power {image=arrow_down.png} 5"
+    $ power -=5
     jump conditions
 
 ###################################################### Event11
@@ -728,7 +719,7 @@ label choice11_2:
 
 ###################################################### Event12
 label scenario12:
-    $ tips = "{b}Tips{/b} : Establish this low will make the population unhappy but you will keep all your other ressources. \n If you ignore it, the population of the village will increase and this will cost you a lot of money."
+    $ tips = "{b}Tips{/b} : Establish this law will make the population unhappy but you will keep all your other ressources. \n If you ignore it, the population of the village will increase and this will cost you a lot of money."
     $ theory_text = "{b}Theory{/b} : In the event of a strong increase in the population, it is necessary to adapt various economic parameters to tend again towards the point of equilibrium, that is to say the optimal status of growth. If the population increases but savings and technological investments are not adapted, the stock of capital per inhabitant will logically decrease, the economy will decline until it returns to a point of equilibrium."
     show screen gameUI
     show screen theory
@@ -805,24 +796,15 @@ label choice13_2:
 ###################################################### Event14
 label scenario14:
     $ counter += 1
-    $ theory_text = "{b}Theory{/b} : To have good technical progress, source of good growth according to Solow, it is necessary to invest not only in research, but also in the implementation of these technologies in companies. It is therefore also necessary to develop the industrial fabric to have the best results and benefit from the advantages of the improved productivity of the workers."
-    show screen theory
-    show perso animated :
-        xzoom 2  yzoom 2
-        xalign 0.1 yalign 1.0
     $ situation = "The village's education system is outdated and causing a skills gap in the workforce. What should we do?"
     show screen s
 
     menu:
         "Invest in upgrading the education system and potentially increase economic efficiency.":
             hide screen s
-            hide screen theory
-            hide perso animated
             jump choice14_1
         "Ignore the problem.":
             hide screen s
-            hide screen theory
-            hide perso animated
             jump choice14_2
 
 label choice14_1:
@@ -1225,12 +1207,10 @@ label scenario23:
             hide screen s
             hide screen theory
             hide perso animated
-            hide perso animated
             jump choice23_1
         "Reject them and potentially preserve resources.":
             hide screen s
             hide screen theory
-            hide perso animated
             hide perso animated
             jump choice23_2
 
@@ -1303,8 +1283,9 @@ label conditions:
                 show sprite_happy2 with leftside :
                     xzoom 4  yzoom 4
                     xalign 0.95 yalign 0.6
-            "Scientific research has brought in money! \nGain : money {image=arrow_up.png} 10"
+            "Scientific research has brought in money! \nGain : money {image=arrow_up.png} 10, population {image=arrow_up.png} 10"
             $ money += 10  
+            $ population += 10
             if avatar ==1 :
                 hide sprite_happy with leftside
             if avatar == 2 :
@@ -1379,7 +1360,7 @@ label conditions:
     if actif10== True :
         if (counter)== (counter10 +1) :
             "Investing in the development of our own trade network has resulted in significant profits and made our village a major player in the regional trade network. \n Gain : money {image=arrow_up.png} 10, population {image=arrow_up.png} 10"
-            $ power += 10 
+            $ money += 10 
             $ population += 10
         if (counter) == (counter10 +3):
             if avatar ==1:
@@ -1496,7 +1477,8 @@ label conditions:
 
     if actif16== True :
         if counter == (counter16+1) and (positif16 == True):
-            "After investing in repairing the infrastructure, the efficiency of the village has significantly improved, resulting in faster production times. \nGain : power {image=arrow_up.png} 10, happiness {image=arrow_up.png} 10"
+            "After investing in repairing the infrastructure, the efficiency of the village has significantly improved, resulting in faster production times. \nGain : power {image=arrow_up.png} 10, happiness {image=arrow_up.png} 10, population {image=arrow_up.png} 10"
+            $ population += 10 
             $ power += 10
             $ happiness += 10
             $ actif16 = False
@@ -1524,8 +1506,10 @@ label conditions:
 
     if actif17== True :
         if counter == (counter17+1):
-            "The crops yield profits ! \nGain : money {image=arrow_up.png} 20"
+            "The crops yield profits ! \nGain : money {image=arrow_up.png} 20, happiness {image=arrow_up.png} 10, population {image=arrow_up.png} 10"
+            $ population += 10 
             $ money += 20
+            $ happiness += 10
             $ actif17 = False
 
     if actif18== True :

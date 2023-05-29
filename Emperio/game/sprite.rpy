@@ -193,11 +193,11 @@ label character_choice:
 
     "Choose your character before we begin - each character has unique strengths and weaknesses that will impact gameplay !"
     $ hubmenu = False
-    show sprite_attack with leftside :
+    show sprite_attack :#with leftside :
         xzoom 5  yzoom 5
         xalign 0.3 yalign 0.6
 
-    show sprite_attack2 with leftside :
+    show sprite_attack2 :#with leftside :
         xzoom 5  yzoom 5
         xalign 0.8 yalign 0.6
     with Dissolve(.5)
@@ -216,8 +216,8 @@ label character_choice:
             $ power = 10
             $ money = 30
 
-    hide sprite_attack with leftside
-    hide sprite_attack2 with leftside
+    hide sprite_attack #with leftside
+    hide sprite_attack2 #with leftside
     hide screen stat_box1
     hide screen stat_box2
 

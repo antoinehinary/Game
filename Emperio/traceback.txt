@@ -1,60 +1,48 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/begin.rpy", line 34, in script
-    menu:
-  File "game/screens.rpy", line 208, in execute
-    screen choice(items):
-  File "game/screens.rpy", line 208, in keywords
-    screen choice(items):
-  File "game/screens.rpy", line 209, in keywords
-    if hubmenu == True:
-  File "game/screens.rpy", line 209, in <module>
-    if hubmenu == True:
-NameError: name 'hubmenu' is not defined
+  File "game/scenario.rpy", line 336, in script
+    show sprite_hurt with leftside :
+TypeError: unsupported operand type(s) for *: 'MoveInterpolate' and 'int'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/begin.rpy", line 34, in script
-    menu:
-  File "renpy/ast.py", line 1903, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "renpy/exports.py", line 1010, in menu
-    rv = renpy.store.menu(new_items)
-  File "renpy/exports.py", line 1250, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3377, in interact
+  File "game/scenario.rpy", line 336, in script
+    show sprite_hurt with leftside :
+  File "renpy/ast.py", line 1678, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "renpy/exports.py", line 1757, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "renpy/display/core.py", line 2898, in do_with
+    clear=clear)
+  File "renpy/display/core.py", line 3499, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "renpy/display/core.py", line 3810, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/screen.py", line 451, in visit_all
-    callback(self)
-  File "renpy/display/core.py", line 3810, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/screen.py", line 462, in per_interact
-    self.update()
-  File "renpy/display/screen.py", line 653, in update
-    self.screen.function(**self.scope)
-  File "game/screens.rpy", line 208, in execute
-    screen choice(items):
-  File "game/screens.rpy", line 208, in keywords
-    screen choice(items):
-  File "game/screens.rpy", line 209, in keywords
-    if hubmenu == True:
-  File "game/screens.rpy", line 209, in <module>
-    if hubmenu == True:
-NameError: name 'hubmenu' is not defined
+  File "renpy/display/core.py", line 4089, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2702, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "renpy/display/layout.py", line 886, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "renpy/display/layout.py", line 886, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "renpy/display/layout.py", line 899, in render
+    offset = child.place(rv, 0, 0, width, height, surf)
+  File "renpy/display/core.py", line 661, in place
+    placement = self.get_placement()
+  File "renpy/display/movetransition.py", line 438, in get_placement
+    xpos = I(old_xpos, new_xpos)
+  File "renpy/display/movetransition.py", line 433, in I
+    return absolute(a + done * (b - a))
+TypeError: unsupported operand type(s) for *: 'MoveInterpolate' and 'int'
 
 Windows-10-10.0.19041 AMD64
-Ren'Py 7.5.3.22090809
+Ren'Py 7.6.0.23051307
 Emperio 1.0
-Sun May 21 22:28:34 2023
+Sun May 28 19:32:52 2023
